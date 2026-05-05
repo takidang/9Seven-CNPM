@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chat với chuyên gia — Pharmacy Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="assets/js/i18n.js"></script>
+<style>
+  :root {
+    --purple-600: #9333EA;
+    --purple-500: #A855F7;
+    --purple-50:  #FAF5FF;
+    --brand-cyan: #06B6D4;
+    --cyan-300:   #67E8F9;
+    --violet-500: #8B5CF6;
+    --neutral-900: #171717;
+    --neutral-800: #262626;
+    --neutral-700: #404040;
+    --neutral-600: #525252;
+    --neutral-500: #737373;
+    --neutral-400: #A3A3A3;
+    --neutral-300: #D4D4D4;
+    --neutral-200: #E5E5E5;
+    --neutral-100: #F5F5F5;
+    --neutral-50:  #FAFAFA;
+    --white:       #FFFFFF;
+    --pa-navy:     #0A1F44;
+    --warning-bg:  #FEF3C7;
+    --warning-text:#92400E;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--neutral-50);
+    color: var(--neutral-900);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+  }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar {
+    background: var(--white);
+    border-right: 1px solid var(--neutral-200);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sidebar-top {
+    padding: 16px;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--neutral-900);
+    margin-bottom: 16px;
+  }
+  .brand img { width: 32px; height: 32px; object-fit: contain; }
+  .brand-text { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+
+  .new-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, var(--purple-600), var(--brand-cyan));
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(147, 51, 234, 0.25);
+  }
+  .new-chat-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.4);
+  }
+
+  .sidebar-section {
+    padding: 12px 16px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--neutral-500);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .chat-history {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 8px;
+  }
+
+  .chat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--neutral-700);
+    font-size: 14px;
+    margin-bottom: 2px;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .chat-item:hover { background: var(--neutral-100); }
+  .chat-item.active {
+    background: var(--purple-50);
+    color: var(--purple-600);
+    font-weight: 500;
+  }
+  .chat-item .icon { font-size: 14px; opacity: 0.6; }
+  .chat-item .text { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .chat-item .delete-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--neutral-500);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .chat-item:hover .delete-btn { display: flex; }
+  .chat-item .delete-btn:hover {
+    background: #FEE2E2;
+    color: #DC2626;
+  }
+
+  .empty-history {
+    padding: 24px 16px;
+    text-align: center;
+    color: var(--neutral-500);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .sidebar-bottom {
+    padding: 12px;
+    border-top: 1px solid var(--neutral-200);
+  }
+  .user-tile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .user-tile:hover { background: var(--neutral-100); }
+  .user-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-600), var(--brand-cyan));
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600;
+  }
+  .user-name { font-size: 13px; font-weight: 500; }
+  .user-plan { font-size: 11px; color: var(--neutral-500); }
+
+  /* ============ MAIN CHAT ============ */
+  .main {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .chat-header {
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--neutral-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+  }
+
+  .chat-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .agent-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-600), var(--brand-cyan));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+  }
+  .agent-avatar::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; right: -2px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #4ADE80;
+    border: 2px solid var(--white);
+  }
+
+  .agent-info .agent-name { font-size: 14px; font-weight: 600; }
+  .agent-info .agent-status { font-size: 12px; color: var(--neutral-500); display: flex; align-items: center; gap: 4px; }
+
+  .chat-header-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .icon-btn {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid var(--neutral-200);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-700);
+    transition: all 0.15s;
+  }
+  .icon-btn:hover { background: var(--neutral-100); border-color: var(--neutral-300); }
+
+  /* ============ DISCLAIMER BANNER ============ */
+  .disclaimer {
+    margin: 16px 24px 0;
+    padding: 12px 16px;
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    border-radius: 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .disclaimer .icon { font-size: 16px; flex-shrink: 0; }
+
+  /* ============ MESSAGES ============ */
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .messages-inner {
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Welcome screen */
+  .welcome {
+    text-align: center;
+    padding: 60px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .welcome-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+  .welcome-logo img {
+    width: 100%; height: 100%; object-fit: contain;
+    position: relative; z-index: 2;
+    filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.4));
+    animation: float-soft 4s ease-in-out infinite;
+  }
+  .welcome-logo::before {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.3), transparent 60%);
+    filter: blur(20px);
+    z-index: 1;
+  }
+  @keyframes float-soft {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  .welcome h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .welcome h1 .gradient-text {
+    background: linear-gradient(to right, var(--purple-600), var(--brand-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .welcome p {
+    color: var(--neutral-600);
+    margin-bottom: 32px;
+  }
+
+  .suggestions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .suggestion {
+    padding: 16px;
+    border: 1px solid var(--neutral-200);
+    border-radius: 12px;
+    background: var(--white);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .suggestion:hover {
+    border-color: var(--purple-600);
+    background: var(--purple-50);
+    transform: translateY(-2px);
+  }
+  .suggestion-cat {
+    font-size: 11px;
+    color: var(--purple-600);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .suggestion-text {
+    font-size: 14px;
+    color: var(--neutral-800);
+    line-height: 1.4;
+  }
+
+  /* Message bubbles */
+  .msg {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .msg.user {
+    flex-direction: row-reverse;
+  }
+  .msg-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .msg.user .msg-avatar { background: var(--neutral-800); }
+  .msg.bot .msg-avatar {
+    background: linear-gradient(135deg, var(--purple-600), var(--brand-cyan));
+  }
+
+  .msg-bubble {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .msg.user .msg-bubble {
+    background: var(--neutral-900);
+    color: var(--white);
+    border-bottom-right-radius: 4px;
+  }
+  .msg.bot .msg-bubble {
+    background: var(--neutral-100);
+    color: var(--neutral-900);
+    border-bottom-left-radius: 4px;
+    white-space: pre-line;
+  }
+  .msg.admin .msg-bubble {
+    background: linear-gradient(135deg, #FAF5FF, #F0F9FF);
+    color: var(--neutral-900);
+    border: 1px solid var(--purple-500);
+    border-bottom-left-radius: 4px;
+    white-space: pre-line;
+  }
+  .msg.admin .msg-avatar {
+    background: linear-gradient(135deg, #16A34A, #06B6D4);
+  }
+  .msg.system {
+    justify-content: center;
+  }
+  .msg.system .msg-avatar { display: none; }
+  .msg.system .msg-bubble {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    font-size: 13px;
+    font-style: italic;
+    border-radius: 999px;
+    padding: 6px 14px;
+    max-width: 100%;
+  }
+  .admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--purple-600);
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* Source citations under bot answer */
+  .sources {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--neutral-300);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .source-chip {
+    font-size: 11px;
+    padding: 3px 8px;
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    color: var(--neutral-700);
+    cursor: pointer;
+  }
+  .source-chip:hover { border-color: var(--purple-600); color: var(--purple-600); }
+
+  /* Typing indicator */
+  .typing {
+    display: flex;
+    gap: 4px;
+    padding: 16px;
+  }
+  .typing span {
+    width: 8px; height: 8px;
+    background: var(--neutral-400);
+    border-radius: 50%;
+    animation: typing-bounce 1.4s ease-in-out infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30%           { transform: translateY(-6px); opacity: 1; }
+  }
+
+  /* ============ INPUT BAR ============ */
+  .input-wrap {
+    padding: 12px 24px 24px;
+    background: var(--white);
+  }
+  .input-wrap-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .input-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    background: var(--neutral-100);
+    border: 1px solid var(--neutral-200);
+    border-radius: 20px;
+    padding: 8px;
+    transition: border-color 0.15s;
+  }
+  .input-bar:focus-within {
+    border-color: var(--purple-600);
+    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+  }
+  .input-bar textarea {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 12px;
+    font-size: 15px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    color: var(--neutral-900);
+    max-height: 200px;
+    line-height: 1.5;
+  }
+  .input-bar textarea::placeholder { color: var(--neutral-500); }
+
+  .send-btn {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    border: none;
+    background: var(--neutral-900);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .send-btn:hover { background: var(--purple-600); }
+  .send-btn:disabled { background: var(--neutral-300); cursor: not-allowed; }
+
+  .input-foot {
+    text-align: center;
+    font-size: 11px;
+    color: var(--neutral-500);
+    margin-top: 8px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 760px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .suggestions { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- ========== SIDEBAR ========== -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html" class="brand">
+        <img src="assets/images/logo-pa.png?v=2" alt="Pharmacy Academy" />
+        <span class="brand-text">Pharmacy Academy</span>
+      </a>
+      <button class="new-chat-btn" onclick="newChat()" data-i18n="chat.new">
+        ＋ Cuộc trò chuyện mới
+      </button>
+    </div>
+
+    <div class="sidebar-section" id="historyLabel" data-i18n="chat.history">Lịch sử</div>
+    <div class="chat-history" id="chatHistory">
+      <!-- Items rendered by JS from localStorage -->
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="user-tile">
+        <div class="user-avatar">SP</div>
+        <div>
+          <div class="user-name">Sam Phạm</div>
+          <div class="user-plan" data-i18n="chat.user.role">Học viên · Free</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========== MAIN ========== -->
+  <main class="main">
+    <header class="chat-header">
+      <div class="chat-header-left">
+        <div class="agent-avatar">PA</div>
+        <div class="agent-info">
+          <div class="agent-name" data-i18n="chat.agent.name">Trợ lý chuyên gia Dược</div>
+          <div class="agent-status" data-i18n="chat.agent.status">● Đang hoạt động · Phản hồi trong vài giây</div>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="icon-btn" title="Lịch sử">⟲</button>
+        <button class="icon-btn" title="Xuất cuộc trò chuyện">↓</button>
+        <button class="icon-btn" title="Tùy chọn">⋯</button>
+      </div>
+    </header>
+
+    <div class="disclaimer">
+      <span class="icon">⚠️</span>
+      <span data-i18n="chat.disclaimer">
+        Thông tin từ trợ lý chỉ mang tính tham khảo, không thay thế chẩn đoán và tư vấn của bác sĩ/dược sĩ. Trong trường hợp khẩn cấp, vui lòng liên hệ cơ sở y tế gần nhất.
+      </span>
+    </div>
+
+    <div class="messages" id="messages">
+      <div class="messages-inner" id="messagesInner">
+        <!-- Welcome screen (shown when no messages) -->
+        <div class="welcome" id="welcome">
+          <div class="welcome-logo">
+            <img src="assets/images/logo-pa.png?v=2" alt="PA" />
+          </div>
+          <h1><span data-i18n="chat.welcome.line1">Xin chào! Tôi là</span> <span class="gradient-text" data-i18n="chat.welcome.accent">Trợ lý chuyên gia Dược</span></h1>
+          <p data-i18n="chat.welcome.sub">Hỏi tôi bất cứ điều gì về thuốc, bệnh lý, tương tác thuốc, hoặc tư vấn nhà thuốc.</p>
+
+          <div class="suggestions">
+            <button class="suggestion" onclick="sendSuggestion(this)">
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat1">💊 Tra cứu thuốc</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text1">Cho tôi biết về paracetamol — liều dùng, chống chỉ định, tác dụng phụ</div>
+            </button>
+            <button class="suggestion" onclick="sendSuggestion(this)">
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat2">🩺 Triệu chứng</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text2">Bệnh nhân ho khan kéo dài 3 tuần — tôi nên tư vấn gì tại nhà thuốc?</div>
+            </button>
+            <button class="suggestion" onclick="sendSuggestion(this)">
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat3">⚠️ Tương tác</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text3">Warfarin có tương tác nguy hiểm với những thuốc nào?</div>
+            </button>
+            <button class="suggestion" onclick="sendSuggestion(this)">
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat4">📚 Học liệu</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text4">Tóm tắt nhóm thuốc kháng histamin H1 — phân loại và cách chọn</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-wrap">
+      <div class="input-wrap-inner">
+        <div class="input-bar">
+          <textarea
+            id="input"
+            data-i18n-attr="placeholder:chat.input.placeholder"
+            placeholder="Hỏi về thuốc, bệnh, tương tác..."
+            rows="1"
+            onkeydown="handleKey(event)"
+            oninput="autoGrow(this)"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>↑</button>
+        </div>
+        <div class="input-foot" data-i18n="chat.input.foot">
+          Trợ lý có thể mắc lỗi · Luôn xác minh thông tin quan trọng với chuyên gia
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  const input = document.getElementById('input');
+  const sendBtn = document.getElementById('sendBtn');
+  const messagesInner = document.getElementById('messagesInner');
+  const welcome = document.getElementById('welcome');
+  const chatHistoryEl = document.getElementById('chatHistory');
+  const historyLabel = document.getElementById('historyLabel');
+
+  const STORAGE_KEY = 'pa_chat_history';
+
+  let chats = loadChats();
+  let currentChatId = null;
+  renderHistory();
+
+  /* ---------- Storage ---------- */
+  function loadChats() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch { return []; }
+  }
+  function saveChats() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(chats));
+  }
+
+  function renderHistory() {
+    chatHistoryEl.innerHTML = '';
+    if (chats.length === 0) {
+      historyLabel.style.display = 'none';
+      const empty = document.createElement('div');
+      empty.className = 'empty-history';
+      empty.textContent = (window.PA_i18n ? PA_i18n.tr('chat.empty') : 'Chưa có cuộc trò chuyện nào. Hỏi câu đầu tiên để bắt đầu!');
+      chatHistoryEl.appendChild(empty);
+      return;
+    }
+    historyLabel.style.display = '';
+    chats.forEach(c => {
+      const item = document.createElement('div');
+      item.className = 'chat-item' + (c.id === currentChatId ? ' active' : '');
+      item.onclick = () => loadChat(c.id);
+      item.innerHTML = `
+        <span class="icon">💬</span>
+        <span class="text">${escapeHtml(c.title)}</span>
+        <button class="delete-btn" title="Xóa cuộc trò chuyện">✕</button>
+      `;
+      item.querySelector('.delete-btn').onclick = (e) => {
+        e.stopPropagation();
+        deleteChat(c.id);
+      };
+      chatHistoryEl.appendChild(item);
+    });
+  }
+
+  function deleteChat(id) {
+    if (!confirm('Xóa cuộc trò chuyện này?')) return;
+    chats = chats.filter(c => c.id !== id);
+    saveChats();
+    if (currentChatId === id) newChat();
+    else renderHistory();
+  }
+
+  function loadChat(id) {
+    const chat = chats.find(c => c.id === id);
+    if (!chat) return;
+    currentChatId = id;
+    messagesInner.innerHTML = '';
+    welcome.style.display = 'none';
+    chat.messages.forEach(m => renderMessage(m.role, m.text, m.sources));
+    renderHistory();
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  /* ---------- UI ---------- */
+  input.addEventListener('input', () => {
+    sendBtn.disabled = !input.value.trim();
+  });
+
+  function autoGrow(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 200) + 'px';
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function sendSuggestion(btn) {
+    const text = btn.querySelector('.suggestion-text').textContent.trim();
+    input.value = text;
+    sendBtn.disabled = false;
+    sendMessage();
+  }
+
+  function newChat() {
+    currentChatId = null;
+    messagesInner.innerHTML = '';
+    messagesInner.appendChild(welcome);
+    welcome.style.display = '';
+    renderHistory();
+  }
+
+  function renderMessage(role, text, sources = []) {
+    welcome.style.display = 'none';
+    const msg = document.createElement('div');
+    msg.className = 'msg ' + role;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'msg-avatar';
+    avatar.textContent = role === 'user' ? 'S' : (role === 'admin' ? '👨‍⚕️' : 'PA');
+
+    const bubble = document.createElement('div');
+    bubble.className = 'msg-bubble';
+
+    if (role === 'admin') {
+      const badge = document.createElement('div');
+      badge.className = 'admin-badge';
+      badge.textContent = '✓ CHUYÊN GIA DƯỢC';
+      bubble.appendChild(badge);
+      const txt = document.createElement('div');
+      txt.textContent = text;
+      bubble.appendChild(txt);
+    } else {
+      bubble.textContent = text;
+    }
+
+    if (sources.length > 0) {
+      const srcWrap = document.createElement('div');
+      srcWrap.className = 'sources';
+      sources.forEach(s => {
+        const chip = document.createElement('span');
+        chip.className = 'source-chip';
+        chip.textContent = '📄 ' + s;
+        srcWrap.appendChild(chip);
+      });
+      bubble.appendChild(srcWrap);
+    }
+
+    msg.appendChild(avatar);
+    msg.appendChild(bubble);
+    messagesInner.appendChild(msg);
+    messagesInner.parentElement.scrollTop = messagesInner.parentElement.scrollHeight;
+  }
+
+  function showTyping() {
+    const msg = document.createElement('div');
+    msg.className = 'msg bot';
+    msg.id = 'typingMsg';
+    msg.innerHTML = `
+      <div class="msg-avatar">PA</div>
+      <div class="msg-bubble" style="padding:8px 16px;">
+        <div class="typing"><span></span><span></span><span></span></div>
+      </div>
+    `;
+    messagesInner.appendChild(msg);
+    messagesInner.parentElement.scrollTop = messagesInner.parentElement.scrollHeight;
+  }
+
+  function removeTyping() {
+    document.getElementById('typingMsg')?.remove();
+  }
+
+  /* ---------- Bot FAQ (web-only, no medical advice) ---------- */
+  const FAQ_RULES = [
+    {
+      keywords: ['giá', 'học phí', 'chi phí', 'bao nhiêu tiền', 'phí'],
+      reply: 'Bảng giá khóa học tại Pharmacy Academy:\n• Khóa cơ bản: 499.000₫\n• Khóa chuyên sâu: 799.000₫\n• Combo trọn đời: 2.499.000₫\nXem chi tiết tại trang Bảng giá.',
+    },
+    {
+      keywords: ['khóa học', 'course', 'lộ trình', 'chương trình'],
+      reply: 'Chúng tôi có 4 mảng đào tạo chính:\n• Dược lâm sàng\n• Sức khỏe toàn diện\n• Chăm sóc da & wellness\n• Tư vấn nhà thuốc\nMỗi mảng có 10-30 bài học do dược sĩ thực hành biên soạn.',
+    },
+    {
+      keywords: ['đăng ký', 'sign up', 'đăng kí', 'tham gia'],
+      reply: 'Bạn có thể đăng ký miễn phí tại nút "Bắt Đầu Ngay" ở góc phải trên cùng. Sau khi tạo tài khoản, bạn được học thử 1 bài bất kỳ trước khi quyết định mua khóa.',
+    },
+    {
+      keywords: ['liên hệ', 'hotline', 'email', 'số điện thoại'],
+      reply: '📞 Hotline: 1900 638 315 (8h-22h hàng ngày)\n📧 Email: hello@pa.edu.vn\n💬 Chat trực tiếp với chuyên gia ngay tại đây',
+    },
+    {
+      keywords: ['giảng viên', 'chuyên gia', 'instructor', 'thầy cô'],
+      reply: 'Đội ngũ Pharmacy Academy gồm 30+ dược sĩ thực hành lâu năm tại bệnh viện, nhà thuốc lớn và giảng viên đại học. Xem chi tiết tại mục "Giảng viên" trên trang chủ.',
+    },
+    {
+      keywords: ['chứng chỉ', 'bằng cấp', 'certificate'],
+      reply: 'Sau khi hoàn thành khóa học và đạt 80%+ bài kiểm tra, bạn nhận được chứng chỉ điện tử của Pharmacy Academy — được công nhận bởi các đối tác nhà thuốc và doanh nghiệp dược.',
+    },
+    {
+      keywords: ['thanh toán', 'payment', 'trả tiền', 'chuyển khoản'],
+      reply: 'Pharmacy Academy hỗ trợ thanh toán qua: Momo, ZaloPay, VietQR, thẻ ATM nội địa, Visa/Master. Truy cập trọn đời sau khi thanh toán thành công.',
+    },
+    {
+      keywords: ['hoàn tiền', 'refund'],
+      reply: 'Pharmacy Academy có chính sách hoàn tiền 100% trong vòng 7 ngày nếu khóa học không phù hợp với bạn (chưa hoàn thành quá 20% bài học).',
+    },
+  ];
+
+  function tryBotReply(question) {
+    const q = question.toLowerCase();
+    for (const rule of FAQ_RULES) {
+      if (rule.keywords.some(k => q.includes(k))) {
+        return rule.reply;
+      }
+    }
+    return null;
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    /* Create new chat on first message */
+    if (!currentChatId) {
+      currentChatId = 'c_' + Date.now();
+      chats.unshift({
+        id: currentChatId,
+        title: text.slice(0, 50) + (text.length > 50 ? '…' : ''),
+        status: 'bot',
+        messages: [],
+        createdAt: Date.now(),
+      });
+    }
+
+    const chat = chats.find(c => c.id === currentChatId);
+    chat.messages.push({ role: 'user', text, ts: Date.now() });
+    saveChats();
+    renderHistory();
+
+    renderMessage('user', text);
+    input.value = '';
+    input.style.height = 'auto';
+    sendBtn.disabled = true;
+
+    showTyping();
+
+    setTimeout(() => {
+      removeTyping();
+
+      /* If chat already escalated to admin, all messages go to admin */
+      if (chat.status === 'waiting_admin' || chat.status === 'admin_active') {
+        const note = '✓ Câu hỏi đã được gửi đến chuyên gia. Vui lòng chờ phản hồi.';
+        chat.messages.push({ role: 'system', text: note, ts: Date.now() });
+        saveChats();
+        renderMessage('system', note);
+        return;
+      }
+
+      /* Try FAQ bot first */
+      const botReply = tryBotReply(text);
+      if (botReply) {
+        chat.messages.push({ role: 'bot', text: botReply, ts: Date.now() });
+        saveChats();
+        renderMessage('bot', botReply);
+        return;
+      }
+
+      /* No match → escalate to admin */
+      chat.status = 'waiting_admin';
+      chat.waitingSince = Date.now();
+      const escalation =
+        '🤖 Câu hỏi này cần chuyên môn y dược — tôi đã chuyển đến **chuyên gia của Pharmacy Academy**.\n\n' +
+        'Chuyên gia sẽ phản hồi trong vài phút tới. Bạn có thể tiếp tục đặt thêm câu hỏi.';
+      chat.messages.push({ role: 'bot', text: escalation, ts: Date.now() });
+      saveChats();
+      renderMessage('bot', escalation);
+      renderHistory();
+    }, 800);
+  }
+
+  /* ---------- Listen for admin replies (cross-tab sync) ---------- */
+  window.addEventListener('storage', (e) => {
+    if (e.key !== STORAGE_KEY) return;
+    chats = loadChats();
+    if (currentChatId) {
+      const chat = chats.find(c => c.id === currentChatId);
+      if (!chat) return;
+      const lastRendered = messagesInner.querySelectorAll('.msg').length;
+      const newMessages = chat.messages.slice(lastRendered);
+      newMessages.forEach(m => renderMessage(m.role, m.text, m.sources || []));
+    }
+    renderHistory();
+  });
+
+  /* Re-render dynamic parts when language changes */
+  window.addEventListener('langchange', () => renderHistory());
+</script>
+
+</body>
+</html>
