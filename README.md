@@ -1,16 +1,22 @@
-# 9seven – Pharmacy Academy (Đồ án CNPM)
+# 9seven – FFC (Fix Fast Center) (Đồ án CNPM)
 
-> Website học tập & tra cứu kiến thức ngành Dược – Đồ án môn Công nghệ Phần mềm.
+> Hệ thống quản lý tổng thể cho cửa hàng sửa chữa điện thoại & máy tính – Đồ án môn Công nghệ Phần mềm.
 
 ## 📚 Giới thiệu
 
-**Pharmacy Academy** là nền tảng web hỗ trợ sinh viên ngành Dược học tập, tra cứu thuốc, và trao đổi với giảng viên/đồng môn. Dự án gồm 3 trang chính:
+**FFC (Fix Fast Center)** là hệ thống quản lý tổng thể giúp cửa hàng sửa chữa điện thoại & máy tính:
+- Tiếp nhận yêu cầu sửa chữa từ khách hàng (online + tại quầy).
+- Phân công kỹ thuật viên, theo dõi tiến độ đơn sửa.
+- Quản lý linh kiện / phụ tùng, bảo hành, báo giá.
+- Hỗ trợ chat trực tiếp giữa khách hàng và kỹ thuật viên.
+
+Dự án gồm 3 trang chính:
 
 | Trang | Mô tả |
 |---|---|
-| `index.html` | Trang chủ – giới thiệu, danh mục khóa học, đối tác |
-| `admin.html` | Trang quản trị – quản lý nội dung, người dùng, khóa học |
-| `chat.html`  | Trang chat – trao đổi giữa người dùng |
+| `index.html` | Trang khách hàng – giới thiệu dịch vụ, đội ngũ kỹ thuật viên, đặt lịch sửa |
+| `admin.html` | Trang quản trị / kỹ thuật viên – nhận yêu cầu, trả lời khách hàng, quản lý đơn |
+| `chat.html`  | Trang chat khách hàng ↔ kỹ thuật viên |
 
 ## 🗂 Cấu trúc dự án
 
@@ -21,8 +27,8 @@
 │   ├── admin.html
 │   ├── chat.html
 │   └── assets/
-│       ├── images/     # Hình ảnh, logo
-│       ├── js/         # JavaScript (i18n, ...)
+│       ├── images/     # logo-ffc.png + ảnh sản phẩm hero (PC, laptop, iPhone)
+│       ├── js/         # i18n.js (đa ngôn ngữ Việt/Anh)
 │       └── css/        # CSS tách riêng (sẽ bổ sung)
 ├── backend/            # Server, API, database (sẽ phát triển sau)
 ├── docs/               # Tài liệu CNPM: SRS, use case, ERD, mockup
@@ -42,6 +48,14 @@ python3 -m http.server 8000
 
 Sau đó truy cập: <http://localhost:8000/index.html>
 
+**Tài khoản demo (trang admin):**
+- Username: `admin`
+- Password: `admin`
+
+**Chỉnh vị trí 3 ảnh hero (PC/laptop/iPhone) bằng kéo thả:**
+
+Mở `index.html?edit=1` → kéo thả từng ảnh, lăn chuột để zoom (Shift để fine-tune), bấm "Copy CSS" để lấy giá trị paste vào stylesheet. Tắt `?edit=1` → mọi thứ trở lại bình thường, không ảnh hưởng người dùng cuối.
+
 ## 🛠 Công nghệ dự kiến
 
 - **Frontend:** HTML5, CSS3, JavaScript (vanilla), i18n (Việt/Anh)
@@ -58,11 +72,15 @@ Sau đó truy cập: <http://localhost:8000/index.html>
 
 ## 📅 Tiến độ
 
-- [x] Thiết kế UI trang chủ, admin, chat
+- [x] Thiết kế UI trang khách hàng, admin, chat
 - [x] Đa ngôn ngữ (Việt/Anh) qua `i18n.js`
+- [x] Rebrand từ Pharmacy Academy → FFC (Fix Fast Center)
 - [ ] Tách CSS riêng khỏi HTML
 - [ ] Xây dựng backend & database
-- [ ] Kết nối frontend ↔ backend
+- [ ] Chức năng đặt lịch sửa thực tế
+- [ ] Quản lý đơn sửa chữa (CRUD)
+- [ ] Quản lý linh kiện / kho
+- [ ] Hệ thống bảo hành
 - [ ] Triển khai & viết tài liệu CNPM
 
 ## 📄 License

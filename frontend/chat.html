@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chat với chuyên gia — Pharmacy Academy</title>
+<title>Chat với kỹ thuật viên — FFC (Fix Fast Center)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -567,8 +567,8 @@
   <aside class="sidebar">
     <div class="sidebar-top">
       <a href="index.html" class="brand">
-        <img src="assets/images/logo-pa.png?v=2" alt="Pharmacy Academy" />
-        <span class="brand-text">Pharmacy Academy</span>
+        <img src="assets/images/logo-ffc.png?v=2" alt="FFC — Fix Fast Center" />
+        <span class="brand-text">FFC</span>
       </a>
       <button class="new-chat-btn" onclick="newChat()" data-i18n="chat.new">
         ＋ Cuộc trò chuyện mới
@@ -585,7 +585,7 @@
         <div class="user-avatar">SP</div>
         <div>
           <div class="user-name">Sam Phạm</div>
-          <div class="user-plan" data-i18n="chat.user.role">Học viên · Free</div>
+          <div class="user-plan" data-i18n="chat.user.role">Khách hàng · Miễn phí</div>
         </div>
       </div>
     </div>
@@ -595,9 +595,9 @@
   <main class="main">
     <header class="chat-header">
       <div class="chat-header-left">
-        <div class="agent-avatar">PA</div>
+        <div class="agent-avatar">FFC</div>
         <div class="agent-info">
-          <div class="agent-name" data-i18n="chat.agent.name">Trợ lý chuyên gia Dược</div>
+          <div class="agent-name" data-i18n="chat.agent.name">Trợ lý kỹ thuật FFC</div>
           <div class="agent-status" data-i18n="chat.agent.status">● Đang hoạt động · Phản hồi trong vài giây</div>
         </div>
       </div>
@@ -611,7 +611,7 @@
     <div class="disclaimer">
       <span class="icon">⚠️</span>
       <span data-i18n="chat.disclaimer">
-        Thông tin từ trợ lý chỉ mang tính tham khảo, không thay thế chẩn đoán và tư vấn của bác sĩ/dược sĩ. Trong trường hợp khẩn cấp, vui lòng liên hệ cơ sở y tế gần nhất.
+        Thông tin từ trợ lý chỉ mang tính tham khảo. Báo giá chính thức và chẩn đoán chính xác cần kỹ thuật viên kiểm tra trực tiếp tại cửa hàng.
       </span>
     </div>
 
@@ -620,27 +620,27 @@
         <!-- Welcome screen (shown when no messages) -->
         <div class="welcome" id="welcome">
           <div class="welcome-logo">
-            <img src="assets/images/logo-pa.png?v=2" alt="PA" />
+            <img src="assets/images/logo-ffc.png?v=2" alt="FFC" />
           </div>
-          <h1><span data-i18n="chat.welcome.line1">Xin chào! Tôi là</span> <span class="gradient-text" data-i18n="chat.welcome.accent">Trợ lý chuyên gia Dược</span></h1>
-          <p data-i18n="chat.welcome.sub">Hỏi tôi bất cứ điều gì về thuốc, bệnh lý, tương tác thuốc, hoặc tư vấn nhà thuốc.</p>
+          <h1><span data-i18n="chat.welcome.line1">Xin chào! Tôi là</span> <span class="gradient-text" data-i18n="chat.welcome.accent">Trợ lý kỹ thuật FFC</span></h1>
+          <p data-i18n="chat.welcome.sub">Hỏi tôi bất cứ điều gì về sửa chữa, báo giá, lỗi máy hoặc chính sách bảo hành.</p>
 
           <div class="suggestions">
             <button class="suggestion" onclick="sendSuggestion(this)">
-              <div class="suggestion-cat" data-i18n="chat.suggest.cat1">💊 Tra cứu thuốc</div>
-              <div class="suggestion-text" data-i18n="chat.suggest.text1">Cho tôi biết về paracetamol — liều dùng, chống chỉ định, tác dụng phụ</div>
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat1">🔧 Báo giá sửa chữa</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text1">Sửa màn hình iPhone 13 Pro Max bao nhiêu tiền và có bảo hành không?</div>
             </button>
             <button class="suggestion" onclick="sendSuggestion(this)">
-              <div class="suggestion-cat" data-i18n="chat.suggest.cat2">🩺 Triệu chứng</div>
-              <div class="suggestion-text" data-i18n="chat.suggest.text2">Bệnh nhân ho khan kéo dài 3 tuần — tôi nên tư vấn gì tại nhà thuốc?</div>
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat2">📱 Lỗi điện thoại</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text2">Điện thoại tôi tự nhiên không sạc được dù đã đổi cáp — nguyên nhân có thể là gì?</div>
             </button>
             <button class="suggestion" onclick="sendSuggestion(this)">
-              <div class="suggestion-cat" data-i18n="chat.suggest.cat3">⚠️ Tương tác</div>
-              <div class="suggestion-text" data-i18n="chat.suggest.text3">Warfarin có tương tác nguy hiểm với những thuốc nào?</div>
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat3">💻 Lỗi laptop</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text3">Laptop khởi động chậm và rất nóng khi chơi game — có nên vệ sinh + thay keo tản nhiệt?</div>
             </button>
             <button class="suggestion" onclick="sendSuggestion(this)">
-              <div class="suggestion-cat" data-i18n="chat.suggest.cat4">📚 Học liệu</div>
-              <div class="suggestion-text" data-i18n="chat.suggest.text4">Tóm tắt nhóm thuốc kháng histamin H1 — phân loại và cách chọn</div>
+              <div class="suggestion-cat" data-i18n="chat.suggest.cat4">🛡️ Bảo hành</div>
+              <div class="suggestion-text" data-i18n="chat.suggest.text4">Sửa máy ở FFC có bảo hành bao lâu và áp dụng trong trường hợp nào?</div>
             </button>
           </div>
         </div>
@@ -653,7 +653,7 @@
           <textarea
             id="input"
             data-i18n-attr="placeholder:chat.input.placeholder"
-            placeholder="Hỏi về thuốc, bệnh, tương tác..."
+            placeholder="Hỏi về sửa chữa, báo giá, lỗi máy..."
             rows="1"
             onkeydown="handleKey(event)"
             oninput="autoGrow(this)"
@@ -661,7 +661,7 @@
           <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>↑</button>
         </div>
         <div class="input-foot" data-i18n="chat.input.foot">
-          Trợ lý có thể mắc lỗi · Luôn xác minh thông tin quan trọng với chuyên gia
+          Trợ lý có thể trả lời chưa chính xác · Báo giá chính thức cần kiểm tra máy trực tiếp
         </div>
       </div>
     </div>
@@ -781,7 +781,7 @@
 
     const avatar = document.createElement('div');
     avatar.className = 'msg-avatar';
-    avatar.textContent = role === 'user' ? 'S' : (role === 'admin' ? '👨‍⚕️' : 'PA');
+    avatar.textContent = role === 'user' ? 'S' : (role === 'admin' ? '🔧' : 'FFC');
 
     const bubble = document.createElement('div');
     bubble.className = 'msg-bubble';
@@ -789,7 +789,7 @@
     if (role === 'admin') {
       const badge = document.createElement('div');
       badge.className = 'admin-badge';
-      badge.textContent = '✓ CHUYÊN GIA DƯỢC';
+      badge.textContent = '✓ KỸ THUẬT VIÊN FFC';
       bubble.appendChild(badge);
       const txt = document.createElement('div');
       txt.textContent = text;
@@ -821,7 +821,7 @@
     msg.className = 'msg bot';
     msg.id = 'typingMsg';
     msg.innerHTML = `
-      <div class="msg-avatar">PA</div>
+      <div class="msg-avatar">FFC</div>
       <div class="msg-bubble" style="padding:8px 16px;">
         <div class="typing"><span></span><span></span><span></span></div>
       </div>
@@ -834,39 +834,39 @@
     document.getElementById('typingMsg')?.remove();
   }
 
-  /* ---------- Bot FAQ (web-only, no medical advice) ---------- */
+  /* ---------- Bot FAQ (web-only, không thay thế chẩn đoán trực tiếp) ---------- */
   const FAQ_RULES = [
     {
-      keywords: ['giá', 'học phí', 'chi phí', 'bao nhiêu tiền', 'phí'],
-      reply: 'Bảng giá khóa học tại Pharmacy Academy:\n• Khóa cơ bản: 499.000₫\n• Khóa chuyên sâu: 799.000₫\n• Combo trọn đời: 2.499.000₫\nXem chi tiết tại trang Bảng giá.',
+      keywords: ['giá', 'báo giá', 'chi phí', 'bao nhiêu tiền', 'phí', 'sửa bao nhiêu'],
+      reply: 'Báo giá tham khảo tại FFC:\n• Thay màn hình iPhone: 800.000₫ – 4.500.000₫ (tuỳ đời máy)\n• Thay pin: 350.000₫ – 1.200.000₫\n• Vệ sinh + thay keo tản nhiệt laptop: 300.000₫\n• Phục hồi dữ liệu: từ 500.000₫\nGiá chính xác cần kỹ thuật viên kiểm tra trực tiếp.',
     },
     {
-      keywords: ['khóa học', 'course', 'lộ trình', 'chương trình'],
-      reply: 'Chúng tôi có 4 mảng đào tạo chính:\n• Dược lâm sàng\n• Sức khỏe toàn diện\n• Chăm sóc da & wellness\n• Tư vấn nhà thuốc\nMỗi mảng có 10-30 bài học do dược sĩ thực hành biên soạn.',
+      keywords: ['dịch vụ', 'sửa gì', 'service', 'làm được gì'],
+      reply: 'FFC cung cấp 5 nhóm dịch vụ chính:\n• Sửa điện thoại (iPhone, Android)\n• Sửa laptop / Macbook\n• Thay màn hình / pin\n• Vệ sinh & nâng cấp (SSD, RAM)\n• Phục hồi dữ liệu\nMọi dịch vụ đều bảo hành rõ ràng.',
     },
     {
-      keywords: ['đăng ký', 'sign up', 'đăng kí', 'tham gia'],
-      reply: 'Bạn có thể đăng ký miễn phí tại nút "Bắt Đầu Ngay" ở góc phải trên cùng. Sau khi tạo tài khoản, bạn được học thử 1 bài bất kỳ trước khi quyết định mua khóa.',
+      keywords: ['đăng ký', 'đặt lịch', 'sign up', 'đăng kí', 'tham gia'],
+      reply: 'Bạn có thể đặt lịch sửa miễn phí tại nút "Đặt Lịch Ngay" ở góc phải trên cùng. Kỹ thuật viên sẽ liên hệ xác nhận lịch trong vòng 30 phút.',
     },
     {
       keywords: ['liên hệ', 'hotline', 'email', 'số điện thoại'],
-      reply: '📞 Hotline: 1900 638 315 (8h-22h hàng ngày)\n📧 Email: hello@pa.edu.vn\n💬 Chat trực tiếp với chuyên gia ngay tại đây',
+      reply: '📞 Hotline: 1900 638 315 (8h-22h hàng ngày)\n📧 Email: hello@ffcenter.vn\n💬 Chat trực tiếp với kỹ thuật viên ngay tại đây',
     },
     {
-      keywords: ['giảng viên', 'chuyên gia', 'instructor', 'thầy cô'],
-      reply: 'Đội ngũ Pharmacy Academy gồm 30+ dược sĩ thực hành lâu năm tại bệnh viện, nhà thuốc lớn và giảng viên đại học. Xem chi tiết tại mục "Giảng viên" trên trang chủ.',
+      keywords: ['kỹ thuật viên', 'thợ', 'technician', 'người sửa', 'ai sửa'],
+      reply: 'Đội ngũ FFC gồm 20+ kỹ thuật viên đã qua đào tạo, từng làm tại các trung tâm bảo hành uỷ quyền. Xem hồ sơ chi tiết tại mục "Kỹ thuật viên" trên trang chủ.',
     },
     {
-      keywords: ['chứng chỉ', 'bằng cấp', 'certificate'],
-      reply: 'Sau khi hoàn thành khóa học và đạt 80%+ bài kiểm tra, bạn nhận được chứng chỉ điện tử của Pharmacy Academy — được công nhận bởi các đối tác nhà thuốc và doanh nghiệp dược.',
+      keywords: ['bảo hành', 'guarantee', 'warranty'],
+      reply: 'Mọi dịch vụ tại FFC đều có bảo hành:\n• Linh kiện chính hãng: 6 – 12 tháng\n• Linh kiện thay thế tương đương: 3 tháng\n• Vệ sinh / nâng cấp: 1 tháng\nBảo hành không áp dụng cho hư hỏng do vào nước, rơi vỡ sau khi sửa.',
     },
     {
       keywords: ['thanh toán', 'payment', 'trả tiền', 'chuyển khoản'],
-      reply: 'Pharmacy Academy hỗ trợ thanh toán qua: Momo, ZaloPay, VietQR, thẻ ATM nội địa, Visa/Master. Truy cập trọn đời sau khi thanh toán thành công.',
+      reply: 'FFC hỗ trợ thanh toán qua: Momo, ZaloPay, VietQR, thẻ ATM nội địa, Visa/Master, hoặc tiền mặt tại cửa hàng. Thanh toán sau khi nghiệm thu máy.',
     },
     {
       keywords: ['hoàn tiền', 'refund'],
-      reply: 'Pharmacy Academy có chính sách hoàn tiền 100% trong vòng 7 ngày nếu khóa học không phù hợp với bạn (chưa hoàn thành quá 20% bài học).',
+      reply: 'FFC cam kết hoàn 100% chi phí dịch vụ nếu lỗi không được sửa đúng như đã cam kết với khách hàng (trong vòng 7 ngày kể từ khi nhận máy).',
     },
   ];
 
@@ -913,7 +913,7 @@
 
       /* If chat already escalated to admin, all messages go to admin */
       if (chat.status === 'waiting_admin' || chat.status === 'admin_active') {
-        const note = '✓ Câu hỏi đã được gửi đến chuyên gia. Vui lòng chờ phản hồi.';
+        const note = '✓ Câu hỏi đã được gửi đến kỹ thuật viên. Vui lòng chờ phản hồi.';
         chat.messages.push({ role: 'system', text: note, ts: Date.now() });
         saveChats();
         renderMessage('system', note);
@@ -933,8 +933,8 @@
       chat.status = 'waiting_admin';
       chat.waitingSince = Date.now();
       const escalation =
-        '🤖 Câu hỏi này cần chuyên môn y dược — tôi đã chuyển đến **chuyên gia của Pharmacy Academy**.\n\n' +
-        'Chuyên gia sẽ phản hồi trong vài phút tới. Bạn có thể tiếp tục đặt thêm câu hỏi.';
+        '🤖 Câu hỏi này cần kiểm tra kỹ hơn — tôi đã chuyển đến **kỹ thuật viên FFC**.\n\n' +
+        'Kỹ thuật viên sẽ phản hồi trong vài phút tới. Bạn có thể tiếp tục đặt thêm câu hỏi.';
       chat.messages.push({ role: 'bot', text: escalation, ts: Date.now() });
       saveChats();
       renderMessage('bot', escalation);

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bảng điều khiển chuyên gia — Pharmacy Academy</title>
+<title>Bảng điều khiển kỹ thuật viên — FFC (Fix Fast Center)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -51,7 +51,7 @@
     z-index: 100;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 50%, #DBEAFE 100%);
+    background: linear-gradient(135deg, #E0F2FE 0%, #FFFFFF 50%, #DBEAFE 100%);
     overflow: hidden;
   }
 
@@ -151,29 +151,33 @@
   .login-screen::before {
     top: -180px;
     left: -120px;
-    background: rgba(168, 85, 247, 0.85);
+    /* Brighter mid-blue — visible THROUGH the left panel's glass overlay
+       (deep navy was getting desaturated to gray after backdrop-blur) */
+    background: rgba(59, 130, 246, 0.85);
     animation: blob-1 8s ease-in-out infinite;
   }
   .login-screen::after {
     bottom: -180px;
     right: -120px;
-    background: rgba(96, 165, 250, 0.85);
+    /* Bright sky blue — matches the swoosh arrow in the logo */
+    background: rgba(59, 130, 246, 0.85);
     animation: blob-2 9s ease-in-out infinite;
   }
 
-  /* Extra blob layer — pink/magenta drifting through the middle */
+  /* Extra blob layer — deep brand navy on the LEFT half so the left
+     panel still carries the dark logo tone (kept saturated under glass) */
   .blob-extra {
     content: '';
     position: absolute;
     width: 480px;
     height: 480px;
     border-radius: 50%;
-    background: rgba(236, 72, 153, 0.55);
+    background: rgba(30, 58, 95, 0.55);
     filter: blur(70px);
     pointer-events: none;
     z-index: 0;
-    top: 30%;
-    left: 35%;
+    top: 35%;
+    left: 12%;
     animation: blob-3 11s ease-in-out infinite;
   }
   .blob-extra-2 {
@@ -182,12 +186,13 @@
     width: 420px;
     height: 420px;
     border-radius: 50%;
-    background: rgba(45, 212, 191, 0.55);
+    /* Soft cyan-sky on the right half — mirrors the lighter logo accent */
+    background: rgba(125, 211, 252, 0.65);
     filter: blur(70px);
     pointer-events: none;
     z-index: 0;
-    top: 55%;
-    left: 10%;
+    top: 50%;
+    left: 55%;
     animation: blob-4 10s ease-in-out infinite;
   }
 
@@ -226,27 +231,29 @@
     overflow: hidden;
     z-index: 1;
   }
+  /* All particles use brand palette: navy / sky-blue / light-cyan */
   .particle {
     position: absolute;
     border-radius: 50%;
-    background: rgba(168, 85, 247, 0.85);
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+    background: rgba(30, 58, 95, 0.85);
+    box-shadow: 0 0 20px rgba(30, 58, 95, 0.55);
     animation: float-particle 8s ease-in-out infinite;
   }
   .particle:nth-child(1) { top: 12%; left: 18%; width: 12px; height: 12px; animation-delay: 0s; }
   .particle:nth-child(2) { top: 28%; left: 72%; width: 16px; height: 16px; animation-delay: 1s;
-                            background: rgba(96, 165, 250, 0.85); box-shadow: 0 0 22px rgba(96, 165, 250, 0.7); }
+                            background: rgba(59, 130, 246, 0.85); box-shadow: 0 0 22px rgba(59, 130, 246, 0.7); }
   .particle:nth-child(3) { top: 62%; left: 12%; width: 10px; height: 10px; animation-delay: 2s;
-                            background: rgba(236, 72, 153, 0.8); box-shadow: 0 0 18px rgba(236, 72, 153, 0.6); }
+                            background: rgba(125, 211, 252, 0.85); box-shadow: 0 0 18px rgba(125, 211, 252, 0.7); }
   .particle:nth-child(4) { top: 78%; left: 62%; width: 14px; height: 14px; animation-delay: 3s;
-                            background: rgba(96, 165, 250, 0.85); box-shadow: 0 0 22px rgba(96, 165, 250, 0.7); }
+                            background: rgba(59, 130, 246, 0.85); box-shadow: 0 0 22px rgba(59, 130, 246, 0.7); }
   .particle:nth-child(5) { top: 45%; left: 48%; width: 12px; height: 12px; animation-delay: 4s;
-                            background: rgba(45, 212, 191, 0.8); box-shadow: 0 0 18px rgba(45, 212, 191, 0.6); }
-  .particle:nth-child(6) { top: 18%; left: 88%; width: 10px; height: 10px; animation-delay: 5s; }
+                            background: rgba(74, 149, 232, 0.85); box-shadow: 0 0 18px rgba(74, 149, 232, 0.65); }
+  .particle:nth-child(6) { top: 18%; left: 88%; width: 10px; height: 10px; animation-delay: 5s;
+                            background: rgba(96, 165, 250, 0.85); box-shadow: 0 0 18px rgba(96, 165, 250, 0.7); }
   .particle:nth-child(7) { top: 88%; left: 25%; width: 13px; height: 13px; animation-delay: 1.5s;
-                            background: rgba(236, 72, 153, 0.8); box-shadow: 0 0 20px rgba(236, 72, 153, 0.6); }
+                            background: rgba(125, 211, 252, 0.85); box-shadow: 0 0 20px rgba(125, 211, 252, 0.7); }
   .particle:nth-child(8) { top: 35%; left: 35%; width: 9px;  height: 9px;  animation-delay: 3.5s;
-                            background: rgba(45, 212, 191, 0.8); box-shadow: 0 0 16px rgba(45, 212, 191, 0.6); }
+                            background: rgba(74, 149, 232, 0.85); box-shadow: 0 0 16px rgba(74, 149, 232, 0.65); }
 
   @keyframes float-particle {
     0%, 100% { transform: translate(0, 0)         scale(1);   opacity: 0.5; }
@@ -261,78 +268,59 @@
     z-index: 2;
     margin: 16px 8px 16px 16px;
     border-radius: 24px;
-    background: linear-gradient(135deg, rgba(196, 181, 253, 0.25), rgba(147, 197, 253, 0.25));
-    backdrop-filter: blur(20px);
+    /* Lower-opacity sky tint so the underlying brand blobs read THROUGH
+       the glass instead of getting washed out to silver-gray */
+    background: linear-gradient(135deg, rgba(147, 197, 253, 0.18), rgba(96, 165, 250, 0.12));
+    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.5);
     padding: 48px 48px 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
     overflow: hidden;
   }
 
-  /* Big logo wordmark area — centered, logo on top, wordmark stacked below */
+  /* Big logo area — centered at the top of the left panel */
   .left-brand {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    margin: 4px 0 0;
+    margin: 0;
     text-align: center;
   }
   .left-brand img {
-    width: 116px;
-    height: 116px;
+    width: 480px;
+    max-width: 100%;
+    height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 8px 22px rgba(147, 51, 234, 0.3));
+    /* Drop-shadow tinted with the logo's navy/blue so it blends with the bg */
+    filter: drop-shadow(0 16px 40px rgba(30, 58, 95, 0.30))
+            drop-shadow(0 4px 12px rgba(59, 130, 246, 0.20));
+    animation: logo-float 6s ease-in-out infinite;
+    will-change: transform;
   }
-  .left-brand .wordmark-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    line-height: 1;
+  @keyframes logo-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-14px) scale(1.015); }
   }
-  .left-brand .wordmark {
-    font-size: 46px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    background: linear-gradient(135deg, #6D28D9 0%, #A855F7 35%, #3B82F6 70%, #06B6D4 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 14px rgba(147, 51, 234, 0.2);
-  }
-  .left-brand .wordmark-sub {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--neutral-700);
-    margin-top: 8px;
-    /* tiny gradient hairline accents on either side */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  .left-brand .wordmark-sub::before,
-  .left-brand .wordmark-sub::after {
-    content: '';
-    flex: 0 0 26px;
-    height: 2px;
-    border-radius: 2px;
-    background: linear-gradient(to right, #A855F7, #3B82F6);
-    opacity: 0.55;
+  @media (prefers-reduced-motion: reduce) {
+    .left-brand img { animation: none; }
   }
 
+  /* Middle group — stats + policy cards stacked, sits in the vertical center */
+  .login-mid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
   /* Brand stats — fill the middle space with relevant numbers,
      glass cards matching the info-card aesthetic. */
   .brand-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    margin-top: 28px;
   }
   .brand-stat {
     background: rgba(255, 255, 255, 0.55);
@@ -346,7 +334,7 @@
   }
   .brand-stat:hover {
     background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(168, 85, 247, 0.4);
+    border-color: rgba(59, 130, 246, 0.4);
     transform: translateY(-2px);
   }
   .brand-stat .num {
@@ -354,7 +342,8 @@
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #6D28D9, #3B82F6);
+    /* Brand gradient: navy → sky-blue */
+    background: linear-gradient(135deg, #1E3A5F, #3B82F6);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -394,17 +383,18 @@
   .info-card:hover {
     background: rgba(255,255,255,0.8);
     transform: translateX(4px);
-    border-color: rgba(168, 85, 247, 0.4);
+    border-color: rgba(59, 130, 246, 0.4);
   }
   .info-card-icon {
     width: 38px; height: 38px;
     border-radius: 10px;
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(59, 130, 246, 0.12));
-    border: 1px solid rgba(147, 51, 234, 0.15);
+    /* Soft brand tint: navy → sky-blue */
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.12), rgba(59, 130, 246, 0.14));
+    border: 1px solid rgba(59, 130, 246, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--purple-600);
+    color: #2563EB;
     flex-shrink: 0;
     transition: all 0.2s;
   }
@@ -418,143 +408,12 @@
     stroke-linejoin: round;
   }
   .info-card:hover .info-card-icon {
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(59, 130, 246, 0.2));
-    border-color: rgba(147, 51, 234, 0.4);
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.22), rgba(59, 130, 246, 0.24));
+    border-color: rgba(59, 130, 246, 0.4);
     transform: scale(1.05);
   }
 
-  /* ============ DNA DOUBLE HELIX ANIMATION ============ */
-  .deco-band {
-    position: relative;
-    flex: 0 0 auto;
-    /* margin-top + margin-bottom auto centers the band vertically in the
-       remaining space between the policy cards and the partners footer */
-    margin: auto -48px auto;
-    min-height: 200px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 0;
-  }
-
-  /* Faint background wavy contour lines — kept for depth */
-  .wavy-lines {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.35;
-    display: flex;
-    align-items: center;
-    animation: wavy-shift 18s ease-in-out infinite alternate;
-  }
-  .wavy-lines svg { width: 100%; height: 60%; }
-  @keyframes wavy-shift {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-30px); }
-  }
-
-  /* DNA container — spreads full width edge-to-edge.
-     `perspective` + `transform-style: preserve-3d` give true depth so the
-     helix really looks like it's spiraling in/out of the screen. */
-  .dna {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 180px;
-    padding: 0 12px;
-    box-sizing: border-box;
-    pointer-events: none;
-    perspective: 600px;
-    perspective-origin: center;
-  }
-
-  /* Each base pair = 2 orbiting dots + central rung */
-  .bp {
-    position: relative;
-    width: 18px;
-    height: 100%;
-    flex-shrink: 0;
-    transform-style: preserve-3d;
-  }
-
-  /* Connecting "rung" bar (hydrogen bond between A=T / G≡C) */
-  .bp .bar {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 3px;
-    margin-left: -1.5px;
-    background: linear-gradient(to bottom, #9333EA, #06B6D4);
-    border-radius: 2px;
-    will-change: height, opacity;
-    animation: dna-bar 3s linear infinite;
-    box-shadow: 0 0 6px rgba(147, 51, 234, 0.4);
-  }
-
-  /* Top + bottom strand nucleotides — orbit in elliptical paths */
-  .bp .dot {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 14px;
-    height: 14px;
-    margin-left: -7px;
-    margin-top: -7px;
-    border-radius: 50%;
-    will-change: top, transform, opacity, filter;
-    box-shadow:
-      0 6px 14px rgba(0,0,0,0.2),
-      inset 0 -2px 5px rgba(0,0,0,0.22),
-      inset 0 2px 5px rgba(255,255,255,0.55);
-  }
-  .bp .dot.top {
-    background: radial-gradient(circle at 30% 30%, #F5F3FF, #6D28D9 70%);
-    animation: dna-top 3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  }
-  .bp .dot.bot {
-    background: radial-gradient(circle at 30% 30%, #CFFAFE, #0E7490 70%);
-    animation: dna-bot 3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  }
-
-  /* Top strand: traces a vertical ellipse with depth via translateZ.
-     - At z=+60 (front): bigger, bright, sharp.
-     - At z=-60 (back):  smaller, dim, blurred (like out-of-focus).
-     The X swing adds the helical "twist" sideways. */
-  @keyframes dna-top {
-    0%   { top: 8%;  transform: translateX(0)     translateZ(60px)  scale(1);    opacity: 1;    filter: blur(0);   z-index: 3; }
-    25%  { top: 40%; transform: translateX(14px)  translateZ(0)     scale(0.85); opacity: 0.85; filter: blur(0);   z-index: 2; }
-    50%  { top: 82%; transform: translateX(0)     translateZ(-60px) scale(0.55); opacity: 0.3;  filter: blur(2px); z-index: 1; }
-    75%  { top: 40%; transform: translateX(-14px) translateZ(0)     scale(0.85); opacity: 0.85; filter: blur(0);   z-index: 2; }
-    100% { top: 8%;  transform: translateX(0)     translateZ(60px)  scale(1);    opacity: 1;    filter: blur(0);   z-index: 3; }
-  }
-
-  /* Bottom strand: 180° phase offset — when top is in front, bottom is behind. */
-  @keyframes dna-bot {
-    0%   { top: 82%; transform: translateX(0)     translateZ(-60px) scale(0.55); opacity: 0.3;  filter: blur(2px); z-index: 1; }
-    25%  { top: 40%; transform: translateX(-14px) translateZ(0)     scale(0.85); opacity: 0.85; filter: blur(0);   z-index: 2; }
-    50%  { top: 8%;  transform: translateX(0)     translateZ(60px)  scale(1);    opacity: 1;    filter: blur(0);   z-index: 3; }
-    75%  { top: 40%; transform: translateX(14px)  translateZ(0)     scale(0.85); opacity: 0.85; filter: blur(0);   z-index: 2; }
-    100% { top: 82%; transform: translateX(0)     translateZ(-60px) scale(0.55); opacity: 0.3;  filter: blur(2px); z-index: 1; }
-  }
-
-  /* Bar: full when strands at extremes (parallel), thin when crossing (edge-on) */
-  @keyframes dna-bar {
-    0%   { height: 74%; opacity: 1;    transform: translate(-50%, -50%) scaleY(1); }
-    25%  { height: 4%;  opacity: 0.25; transform: translate(-50%, -50%) scaleY(1); }
-    50%  { height: 74%; opacity: 1;    transform: translate(-50%, -50%) scaleY(1); }
-    75%  { height: 4%;  opacity: 0.25; transform: translate(-50%, -50%) scaleY(1); }
-    100% { height: 74%; opacity: 1;    transform: translate(-50%, -50%) scaleY(1); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .bp .dot, .bp .bar, .wavy-lines { animation: none; }
-  }
-
-  /* ============ FLOATING CHEMISTRY ICONS (right panel decor) ============ */
+  /* ============ FLOATING REPAIR-SHOP ICONS (right panel decor) ============ */
   .right-decor {
     position: absolute;
     inset: 0;
@@ -567,9 +426,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #7C3AED;
+    /* Brand navy — matches logo */
+    color: #1E3A5F;
     opacity: 0.18;
-    filter: drop-shadow(0 8px 24px rgba(124, 58, 237, 0.3));
+    filter: drop-shadow(0 8px 24px rgba(30, 58, 95, 0.3));
     animation: fi-drift 9s ease-in-out infinite;
     will-change: transform;
   }
@@ -582,16 +442,17 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  .float-icon.cyan { color: #06B6D4; filter: drop-shadow(0 8px 24px rgba(6, 182, 212, 0.35)); }
-  .float-icon.pink { color: #EC4899; filter: drop-shadow(0 8px 24px rgba(236, 72, 153, 0.3)); }
+  /* Variants kept (class names unchanged) — colors swapped to brand palette */
+  .float-icon.cyan { color: #38BDF8; filter: drop-shadow(0 8px 24px rgba(56, 189, 248, 0.35)); }
+  .float-icon.pink { color: #60A5FA; filter: drop-shadow(0 8px 24px rgba(96, 165, 250, 0.3)); }
   .float-icon.text {
     font-weight: 800;
     line-height: 1;
-    color: #6D28D9;
+    color: #1E3A5F;
     font-family: 'Inter', sans-serif;
     letter-spacing: -0.02em;
   }
-  .float-icon.text.cyan { color: #0891B2; }
+  .float-icon.text.cyan { color: #2563EB; }
 
   /* Position + size + animation delay variants */
   .fi-1 { top:  8%; left:  6%; width: 88px; height: 88px; animation-delay: 0s;   }
@@ -613,23 +474,20 @@
     .float-icon { animation: none; }
   }
 
-  /* Partners footer in left panel — anchored to the bottom of the panel */
+  /* Partners footer in left panel — sits at the bottom via space-between */
   .partners-footer {
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 20px 0 24px;
-    border-top: 1px solid rgba(168, 85, 247, 0.2);
+    border-top: 1px solid rgba(59, 130, 246, 0.22);
     font-size: 13px;
     color: var(--neutral-700);
     flex-wrap: wrap;
-    margin-top: auto;
   }
 
-  /* Partner logos — both rendered at the same height so they look balanced
-     side-by-side, even though source aspect ratios differ (Pharmacity is
-     square, ConCung is wide). Each logo already has its own brand background
-     so we don't wrap them in a card. */
+  /* Partner badges — text labels rendered at the same height so they look
+     balanced side-by-side. Used for trust signals on the login screen. */
   .partner-logo {
     display: inline-flex;
     align-items: center;
@@ -674,18 +532,18 @@
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 24px;
     box-shadow:
-      0 8px 32px rgba(147, 51, 234, 0.15),
+      0 8px 32px rgba(30, 58, 95, 0.18),
       0 0 0 1px rgba(255, 255, 255, 0.5) inset;
   }
   .login-card::before {
     content: '';
     position: absolute;
     inset: -3px;
-    background: linear-gradient(135deg, rgba(196, 181, 253, 0.35), transparent, rgba(147, 197, 253, 0.35));
+    background: linear-gradient(135deg, rgba(186, 220, 248, 0.45), transparent, rgba(125, 211, 252, 0.4));
     border-radius: 26px;
     z-index: -1;
     filter: blur(8px);
-    opacity: 0.7;
+    opacity: 0.75;
   }
 
   .login-logo {
@@ -698,7 +556,7 @@
     text-align: center;
     margin-bottom: 8px;
     letter-spacing: -0.025em;
-    background: linear-gradient(to right, #7E22CE, #A855F7, #3B82F6);
+    background: linear-gradient(to right, #1E3A5F, #2563EB, #3B82F6);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -784,8 +642,8 @@
     stroke-linejoin: round;
   }
   .input-wrap .input-toggle:hover {
-    color: var(--purple-600);
-    background: rgba(147, 51, 234, 0.08);
+    color: #2563EB;
+    background: rgba(59, 130, 246, 0.10);
   }
 
   .form-group input {
@@ -800,8 +658,8 @@
     transition: all 0.15s;
   }
   .form-group input:focus {
-    border-color: var(--purple-600);
-    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.12);
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
     background: var(--white);
   }
   .form-group input.has-toggle { padding-right: 42px; }
@@ -811,7 +669,7 @@
     font-size: 13px;
   }
   .forgot-row a {
-    color: var(--purple-600);
+    color: #2563EB;
     text-decoration: none;
     font-weight: 500;
   }
@@ -820,7 +678,8 @@
   .login-btn {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #4F46E5, #7C3AED, #2563EB);
+    /* Brand gradient: navy → mid-blue → sky */
+    background: linear-gradient(135deg, #1E3A5F, #2563EB, #3B82F6);
     background-size: 200% auto;
     color: var(--white);
     border: none;
@@ -830,7 +689,7 @@
     cursor: pointer;
     font-family: inherit;
     transition: all 0.3s;
-    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -842,7 +701,7 @@
   }
   .login-btn:hover {
     background-position: right center;
-    box-shadow: 0 6px 24px rgba(79, 70, 229, 0.45);
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.48);
     transform: translateY(-1px);
   }
 
@@ -858,7 +717,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--purple-200, #E9D5FF), transparent);
+    background: linear-gradient(to right, transparent, #BFDBFE, transparent);
   }
   .divider span {
     font-size: 12px;
@@ -931,7 +790,7 @@
     color: var(--neutral-600);
   }
   .login-foot a {
-    color: var(--purple-600);
+    color: #2563EB;
     text-decoration: none;
     font-weight: 600;
   }
@@ -1651,92 +1510,63 @@
   <div class="login-left">
     <!-- Big brand wordmark -->
     <div class="left-brand">
-      <img src="assets/images/logo-pa.png?v=2" alt="PA" />
-      <div class="wordmark-stack">
-        <span class="wordmark">Pharmacy</span>
-        <span class="wordmark-sub">Academy</span>
-      </div>
+      <img src="assets/images/logo-ffc.png?v=2" alt="FFC — Fix Fast Center" />
     </div>
 
-    <!-- Brand stats — 3 highlight numbers -->
-    <div class="brand-stats">
-      <div class="brand-stat">
-        <div class="num">120+</div>
-        <div class="lbl" data-i18n="brand.stat.lessons">Bài học</div>
-      </div>
-      <div class="brand-stat">
-        <div class="num">30+</div>
-        <div class="lbl" data-i18n="brand.stat.experts">Chuyên gia</div>
-      </div>
-      <div class="brand-stat">
-        <div class="num">2.000+</div>
-        <div class="lbl" data-i18n="brand.stat.students">Học viên</div>
-      </div>
-    </div>
-
-    <!-- Policy/info link cards -->
-    <div class="info-cards">
-      <a href="#" class="info-card" onclick="openPolicy('terms'); return false;">
-        <div class="info-card-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="8"  y1="13" x2="16" y2="13"/>
-            <line x1="8"  y1="17" x2="14" y2="17"/>
-            <line x1="8"  y1="9"  x2="10" y2="9"/>
-          </svg>
+    <!-- Middle group: stats + policy cards, vertically centered between logo and footer -->
+    <div class="login-mid">
+      <!-- Brand stats — 3 highlight numbers -->
+      <div class="brand-stats">
+        <div class="brand-stat">
+          <div class="num">500+</div>
+          <div class="lbl" data-i18n="brand.stat.lessons">Ca sửa</div>
         </div>
-        <span data-i18n="login.policy_terms">Chính Sách Sử Dụng</span>
-      </a>
-      <a href="#" class="info-card" onclick="openPolicy('privacy'); return false;">
-        <div class="info-card-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
+        <div class="brand-stat">
+          <div class="num">20+</div>
+          <div class="lbl" data-i18n="brand.stat.experts">Kỹ thuật viên</div>
         </div>
-        <span data-i18n="login.policy_privacy">Chính Sách Bảo Mật</span>
-      </a>
-    </div>
-
-    <!-- Decorative orbs + wavy lines (BOTTOM of left panel) -->
-    <div class="deco-band">
-      <div class="wavy-lines">
-        <svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"  stop-color="#A855F7" stop-opacity="0.25"/>
-              <stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#6366F1" stop-opacity="0.25"/>
-            </linearGradient>
-          </defs>
-          <g fill="none" stroke="url(#lineGrad)" stroke-width="1">
-            <path d="M0,30   C300,70  600,-10  1000,30"/>
-            <path d="M0,50   C300,90  600,10   1000,50"/>
-            <path d="M0,70   C300,110 600,30   1000,70"/>
-            <path d="M0,90   C300,130 600,50   1000,90"/>
-            <path d="M0,110  C300,150 600,70   1000,110"/>
-            <path d="M0,130  C300,170 600,90   1000,130"/>
-            <path d="M0,150  C300,190 600,110  1000,150"/>
-          </g>
-        </svg>
+        <div class="brand-stat">
+          <div class="num">2.000+</div>
+          <div class="lbl" data-i18n="brand.stat.students">Khách hàng</div>
+        </div>
       </div>
 
-      <div class="dna" id="dnaHelix">
-        <!-- 28 base pairs rendered by JS to keep markup clean -->
+      <!-- Policy/info link cards -->
+      <div class="info-cards">
+        <a href="#" class="info-card" onclick="openPolicy('terms'); return false;">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="8"  y1="13" x2="16" y2="13"/>
+              <line x1="8"  y1="17" x2="14" y2="17"/>
+              <line x1="8"  y1="9"  x2="10" y2="9"/>
+            </svg>
+          </div>
+          <span data-i18n="login.policy_terms">Chính Sách Sử Dụng</span>
+        </a>
+        <a href="#" class="info-card" onclick="openPolicy('privacy'); return false;">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <span data-i18n="login.policy_privacy">Chính Sách Bảo Mật</span>
+        </a>
       </div>
     </div>
 
     <!-- Partners footer -->
     <div class="partners-footer">
-      <div class="partner-logo" aria-label="Pharmacity">
-        <img src="assets/images/pharmacity.png" alt="Pharmacity" />
+      <div class="partner-logo" aria-label="Genuine parts" style="display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--neutral-700);">
+        🛡️&nbsp;Chính hãng
       </div>
-      <div class="partner-logo" aria-label="ConCung">
-        <img src="assets/images/concung.png" alt="ConCung" />
+      <div class="partner-logo" aria-label="Warranty" style="display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--neutral-700);">
+        🔧&nbsp;Bảo hành
       </div>
       <span style="font-size:13px; color:var(--neutral-600); line-height:1.5; flex:1; min-width:240px;" data-i18n="login.partner_text">
-        Được tài trợ bởi <strong>Pharmacity</strong> và <strong>ConCung</strong>, mang chuẩn mực giáo dục dược lâm sàng đến gần hơn với người Việt Nam.
+        Hợp tác với các nhà cung cấp linh kiện <strong>chính hãng</strong>, mang dịch vụ sửa chữa <strong>uy tín</strong> đến gần hơn với khách hàng Việt Nam.
       </span>
     </div>
   </div>
@@ -1744,64 +1574,66 @@
   <!-- ========== RIGHT FORM PANEL ========== -->
   <div class="login-right">
 
-    <!-- Floating chemistry / pharmacy icons (background decor) -->
+    <!-- Floating repair-shop decor icons (background decor) -->
     <div class="right-decor" aria-hidden="true">
-      <!-- 1. Test tube -->
+      <!-- 1. Wrench (open-end) -->
       <div class="float-icon fi-1">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 2v15a3 3 0 0 0 6 0V2"/>
-          <line x1="7" y1="2" x2="17" y2="2"/>
-          <line x1="9" y1="11" x2="15" y2="11"/>
-          <circle cx="11.5" cy="14" r="0.6" fill="currentColor"/>
-          <circle cx="13"   cy="16" r="0.5" fill="currentColor"/>
+          <path d="M14.7 6.3a4.5 4.5 0 0 1-5.5 5.5L4 17l3 3 5.2-5.2a4.5 4.5 0 0 1 5.5-5.5L15 6.7l-1.4 1.4-1.4-1.4 1.4-1.4z"/>
         </svg>
       </div>
 
-      <!-- 2. Erlenmeyer flask -->
+      <!-- 2. Screwdriver -->
       <div class="float-icon fi-2 cyan">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 3h6v5l5.2 11.3A1 1 0 0 1 19.3 21H4.7a1 1 0 0 1-.9-1.7L9 8V3z"/>
-          <line x1="8.5" y1="3" x2="15.5" y2="3"/>
-          <line x1="7"   y1="14" x2="17" y2="14"/>
+          <path d="M14 4l6 6-3 3-2-2-7 7-3-3 7-7-2-2z"/>
+          <line x1="14" y1="4" x2="20" y2="10"/>
         </svg>
       </div>
 
-      <!-- 3. Atom / molecule -->
+      <!-- 3. CPU / microchip -->
       <div class="float-icon fi-3">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="2" fill="currentColor"/>
-          <ellipse cx="12" cy="12" rx="10" ry="4"/>
-          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/>
-          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-60 12 12)"/>
+          <rect x="6" y="6" width="12" height="12" rx="1.5"/>
+          <rect x="9" y="9" width="6" height="6" rx="0.5"/>
+          <line x1="9"  y1="2"  x2="9"  y2="6"/>
+          <line x1="15" y1="2"  x2="15" y2="6"/>
+          <line x1="9"  y1="18" x2="9"  y2="22"/>
+          <line x1="15" y1="18" x2="15" y2="22"/>
+          <line x1="2"  y1="9"  x2="6"  y2="9"/>
+          <line x1="2"  y1="15" x2="6"  y2="15"/>
+          <line x1="18" y1="9"  x2="22" y2="9"/>
+          <line x1="18" y1="15" x2="22" y2="15"/>
         </svg>
       </div>
 
-      <!-- 4. Pill / capsule (split pill) -->
+      <!-- 4. Smartphone -->
       <div class="float-icon fi-4 pink">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="9" width="20" height="6" rx="3" transform="rotate(-30 12 12)"/>
-          <line x1="8.5" y1="6.5" x2="15.5" y2="17.5"/>
+          <rect x="6" y="2" width="12" height="20" rx="2.5"/>
+          <line x1="10" y1="18.5" x2="14" y2="18.5"/>
+          <line x1="11" y1="4.5"  x2="13" y2="4.5"/>
         </svg>
       </div>
 
-      <!-- 5. Heart / pulse -->
+      <!-- 5. Laptop -->
       <div class="float-icon fi-5 cyan">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22 12h-4l-3 7-6-14-3 7H2"/>
+          <rect x="4" y="5" width="16" height="11" rx="1.5"/>
+          <line x1="2" y1="19" x2="22" y2="19"/>
         </svg>
       </div>
 
-      <!-- 6. Rx symbol — text -->
-      <div class="float-icon fi-6 text">℞</div>
+      <!-- 6. Gear / settings — text-style -->
+      <div class="float-icon fi-6 text">⚙</div>
 
-      <!-- 7. Chemical formula H₂O — text -->
-      <div class="float-icon fi-7 text cyan">H₂O</div>
+      <!-- 7. Diagnostic code — text -->
+      <div class="float-icon fi-7 text cyan">FIX‑01</div>
 
-      <!-- 8. Plus / medical cross -->
+      <!-- 8. Lightning bolt (electronics) -->
       <div class="float-icon fi-8 pink">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect x="9" y="3" width="6" height="18" rx="1.5" fill="currentColor" stroke="none"/>
-          <rect x="3" y="9" width="18" height="6" rx="1.5" fill="currentColor" stroke="none"/>
+          <path d="M13 2L4 14h6l-1 8 9-12h-6z" fill="currentColor" stroke="none"/>
         </svg>
       </div>
     </div>
@@ -1811,7 +1643,7 @@
         <span data-i18n="login.welcome.line1">Chào mừng</span>
         <span data-i18n="login.welcome.accent">trở lại!</span>
       </h1>
-      <p class="sub" data-i18n="login.sub">Đăng nhập vào tài khoản chuyên gia để tiếp tục.</p>
+      <p class="sub" data-i18n="login.sub">Đăng nhập vào tài khoản kỹ thuật viên để tiếp tục.</p>
 
       <div class="login-error" id="loginError"></div>
 
@@ -1869,7 +1701,7 @@
           </svg>
           <span data-i18n="login.trust">Được tin dùng bởi hơn</span>
           <strong>2.000+</strong>
-          <span data-i18n="login.trust_suffix">dược sĩ</span>
+          <span data-i18n="login.trust_suffix">khách hàng</span>
         </div>
       </form>
 
@@ -1906,7 +1738,7 @@
       </div>
 
       <div class="login-foot">
-        <span data-i18n="login.no_account">Chưa có tài khoản chuyên gia?</span> <a href="#" data-i18n="btn.signup">Đăng Ký</a>
+        <span data-i18n="login.no_account">Chưa có tài khoản kỹ thuật viên?</span> <a href="#" data-i18n="btn.signup">Đăng Ký</a>
       </div>
 
       <div class="login-hint" data-i18n="login.hint">
@@ -1925,7 +1757,7 @@
         <div class="pdf-icon">PDF</div>
         <div>
           <div class="pdf-title" id="pdfTitle">Chinh-Sach-Su-Dung.pdf</div>
-          <div class="pdf-meta" data-i18n="pdf.meta">Pharmacy Academy · Cập nhật 02/05/2026</div>
+          <div class="pdf-meta" data-i18n="pdf.meta">FFC · Cập nhật 02/05/2026</div>
         </div>
       </div>
       <div class="pdf-controls">
@@ -1943,11 +1775,11 @@
       <!-- ========== TERMS OF SERVICE PAGE ========== -->
       <div class="pdf-page" id="pdfTerms" style="display:none;">
         <div class="pdf-page-header">
-          <img src="assets/images/logo-pa.png?v=2" alt="PA" />
+          <img src="assets/images/logo-ffc.png?v=2" alt="FFC" />
           <div class="doc-meta">
-            <strong>PHARMACY ACADEMY</strong><br/>
+            <strong>FFC</strong><br/>
             Tài liệu chính thức<br/>
-            Số hiệu: PA-TOS-2026/01
+            Số hiệu: FF-TOS-2026/01
           </div>
         </div>
 
@@ -1956,38 +1788,38 @@
 
         <h2>1.1. Chấp Thuận Điều Khoản</h2>
         <p>
-          Bằng cách đăng ký tài khoản hoặc sử dụng dịch vụ trên hệ thống Pharmacy Academy,
-          người dùng (sau đây gọi là <strong>"Chuyên gia"</strong>) xác nhận đã đọc, hiểu và
+          Bằng cách đăng ký tài khoản hoặc sử dụng dịch vụ trên hệ thống FFC,
+          người dùng (sau đây gọi là <strong>"Kỹ thuật viên"</strong>) xác nhận đã đọc, hiểu và
           đồng ý tuân thủ các quy định dưới đây.
         </p>
 
         <h2>1.2. Quyền Sở Hữu Trí Tuệ</h2>
         <p>
-          Toàn bộ nội dung bao gồm nhưng không giới hạn ở: bài giảng, cơ sở dữ liệu từ
-          <strong>Dược thư Quốc gia Việt Nam</strong>, cấu trúc đề thi và giao diện hệ thống đều
-          thuộc quyền sở hữu trí tuệ của Pharmacy Academy. Mọi hành vi sao chép, trích dẫn hoặc
+          Toàn bộ nội dung bao gồm nhưng không giới hạn ở: quy trình sửa chữa, cơ sở dữ liệu
+          <strong>báo giá linh kiện</strong>, biểu mẫu phiếu sửa và giao diện hệ thống đều
+          thuộc quyền sở hữu trí tuệ của FFC. Mọi hành vi sao chép, trích dẫn hoặc
           tái phân phối nội dung khi chưa có văn bản chấp thuận từ Ban Quản trị đều được coi là
           vi phạm bản quyền.
         </p>
 
-        <h2>1.3. Quy Định Về Tài Khoản Chuyên Gia</h2>
+        <h2>1.3. Quy Định Về Tài Khoản Kỹ Thuật Viên</h2>
         <ul>
-          <li><strong>Tính duy nhất:</strong> Mỗi tài khoản được cấp cho một cá nhân chuyên môn.
+          <li><strong>Tính duy nhất:</strong> Mỗi tài khoản được cấp cho một cá nhân kỹ thuật viên.
               Người dùng không được phép chia sẻ, chuyển nhượng hoặc cho mượn thông tin đăng nhập.</li>
-          <li><strong>Bảo mật:</strong> Chuyên gia tự chịu trách nhiệm duy trì tính bảo mật của
+          <li><strong>Bảo mật:</strong> Kỹ thuật viên tự chịu trách nhiệm duy trì tính bảo mật của
               mật khẩu và các hoạt động phát sinh dưới tài khoản của mình.</li>
         </ul>
 
         <h2>1.4. Trách Nhiệm Chuyên Môn</h2>
         <p>
-          Mặc dù thông tin trên hệ thống được chuẩn hóa theo các tài liệu chính thống của
-          <strong>Bộ Y Tế</strong>, Pharmacy Academy không chịu trách nhiệm pháp lý trực tiếp cho
-          các quyết định lâm sàng của dược sĩ. Chúng tôi khuyến khích sự đối chiếu giữa lý thuyết
-          đào tạo và thực tế bệnh lý tại cơ sở y tế.
+          Mặc dù quy trình sửa chữa được chuẩn hóa theo các tài liệu kỹ thuật của
+          <strong>nhà sản xuất</strong>, FFC không chịu trách nhiệm pháp lý trực tiếp cho
+          các quyết định kỹ thuật của kỹ thuật viên trong từng trường hợp cụ thể. Chúng tôi
+          khuyến khích kiểm tra chéo giữa quy trình chuẩn và tình trạng thực tế của thiết bị.
         </p>
 
         <div class="pdf-page-footer">
-          <span>© 2026 Pharmacy Academy · Tài liệu nội bộ</span>
+          <span>© 2026 FFC · Tài liệu nội bộ</span>
           <span>Trang 1 / 1</span>
         </div>
       </div>
@@ -1995,11 +1827,11 @@
       <!-- ========== PRIVACY POLICY PAGE ========== -->
       <div class="pdf-page" id="pdfPrivacy" style="display:none;">
         <div class="pdf-page-header">
-          <img src="assets/images/logo-pa.png?v=2" alt="PA" />
+          <img src="assets/images/logo-ffc.png?v=2" alt="FFC" />
           <div class="doc-meta">
-            <strong>PHARMACY ACADEMY</strong><br/>
+            <strong>FFC</strong><br/>
             Tài liệu chính thức<br/>
-            Số hiệu: PA-PRV-2026/01
+            Số hiệu: FF-PRV-2026/01
           </div>
         </div>
 
@@ -2007,44 +1839,43 @@
         <div class="subtitle">Privacy Policy · Ngày cập nhật: 02/05/2026</div>
 
         <p>
-          Pharmacy Academy cam kết bảo vệ quyền riêng tư của các thành viên thông qua các tiêu chuẩn
+          FFC cam kết bảo vệ quyền riêng tư của khách hàng và kỹ thuật viên thông qua các tiêu chuẩn
           an ninh mạng nghiêm ngặt.
         </p>
 
         <h2>2.1. Phạm Vi Thu Thập Dữ Liệu</h2>
         <p>Chúng tôi thu thập dữ liệu cá nhân tối thiểu cần thiết để vận hành dịch vụ:</p>
         <ul>
-          <li><strong>Thông tin định danh:</strong> Họ tên, email, chứng chỉ hành nghề (nếu có)
+          <li><strong>Thông tin định danh:</strong> Họ tên, email, mã kỹ thuật viên (nếu có)
               khi đăng ký qua các cổng Google, LinkedIn, Facebook.</li>
-          <li><strong>Dữ liệu học thuật:</strong> Lịch sử truy cập bài giảng, kết quả đánh giá năng
-              lực và tiến độ hoàn thành khóa học.</li>
+          <li><strong>Dữ liệu vận hành:</strong> Lịch sử đơn sửa, đánh giá khách hàng và tiến độ
+              xử lý các yêu cầu trên hệ thống.</li>
         </ul>
 
         <h2>2.2. Mục Đích Sử Dụng Thông Tin</h2>
         <p>Dữ liệu được sử dụng nhằm mục đích:</p>
         <ul>
-          <li>Xác thực và cấp <strong>chứng nhận hoàn thành đào tạo (CME)</strong> theo quy định.</li>
-          <li>Cập nhật các thay đổi mới nhất trong phác đồ điều trị và danh mục thuốc.</li>
-          <li>Nâng cao trải nghiệm học tập cá nhân hóa dựa trên AI.</li>
+          <li>Xác thực kỹ thuật viên và cấp <strong>chứng nhận tay nghề nội bộ</strong> theo quy định.</li>
+          <li>Cập nhật các thay đổi mới nhất trong quy trình sửa chữa và danh mục linh kiện.</li>
+          <li>Nâng cao trải nghiệm khách hàng cá nhân hóa dựa trên dữ liệu lịch sử sửa chữa.</li>
         </ul>
 
         <h2>2.3. Cam Kết Bảo Mật &amp; Chia Sẻ Dữ Liệu</h2>
         <ul>
           <li><strong>Không thương mại hóa:</strong> Chúng tôi tuyệt đối không bán, cho thuê hoặc
               cung cấp thông tin cá nhân của người dùng cho bất kỳ bên thứ ba nào vì mục đích quảng cáo.</li>
-          <li><strong>Chia sẻ pháp lý:</strong> Dữ liệu chỉ được cung cấp cho cơ quan chức năng (như
-              Bộ Y Tế hoặc Hội Dược học) khi có yêu cầu chính thức nhằm mục đích thẩm định chuyên môn
-              hoặc thanh tra cấp bằng.</li>
+          <li><strong>Chia sẻ pháp lý:</strong> Dữ liệu chỉ được cung cấp cho cơ quan chức năng có
+              thẩm quyền khi có yêu cầu chính thức nhằm mục đích thanh tra hoặc giải quyết khiếu nại.</li>
         </ul>
 
         <h2>2.4. Quyền Của Người Dùng</h2>
         <p>
-          Chuyên gia có toàn quyền truy xuất, chỉnh sửa hoặc yêu cầu chấm dứt lưu trữ dữ liệu cá nhân
+          Người dùng có toàn quyền truy xuất, chỉnh sửa hoặc yêu cầu chấm dứt lưu trữ dữ liệu cá nhân
           trên hệ thống bất cứ lúc nào thông qua chức năng <strong>"Cài đặt tài khoản"</strong>.
         </p>
 
         <div class="pdf-page-footer">
-          <span>© 2026 Pharmacy Academy · Tài liệu nội bộ</span>
+          <span>© 2026 FFC · Tài liệu nội bộ</span>
           <span>Trang 1 / 1</span>
         </div>
       </div>
@@ -2058,15 +1889,15 @@
   <div class="topbar">
     <div class="topbar-left">
       <a href="index.html" class="topbar-brand">
-        <img src="assets/images/logo-pa.png?v=2" alt="PA" />
-        <span class="text">Pharmacy Academy</span>
+        <img src="assets/images/logo-ffc.png?v=2" alt="FFC" />
+        <span class="text">FFC</span>
       </a>
-      <span class="role-badge" data-i18n="admin.role">CHUYÊN GIA</span>
+      <span class="role-badge" data-i18n="admin.role">KỸ THUẬT VIÊN</span>
     </div>
     <div class="topbar-right">
       <div class="stat-pill urgent" id="urgentPill" style="display:none;">
         <span class="stat-dot"></span>
-        <span id="urgentCount">0</span> <span data-i18n="admin.urgent">chờ trả lời</span>
+        <span id="urgentCount">0</span> <span data-i18n="admin.urgent">chờ xử lý</span>
       </div>
       <div class="stat-pill">
         💬 <span id="totalCount">0</span> <span data-i18n="admin.total">cuộc trò chuyện</span>
@@ -2081,7 +1912,7 @@
       <div class="queue-header">
         <div class="queue-tabs">
           <button class="queue-tab active" data-filter="waiting" onclick="setFilter('waiting', this)">
-            <span data-i18n="admin.tab.waiting">Chờ trả lời</span> <span class="count" id="cnt-waiting">0</span>
+            <span data-i18n="admin.tab.waiting">Chờ xử lý</span> <span class="count" id="cnt-waiting">0</span>
           </button>
           <button class="queue-tab" data-filter="active" onclick="setFilter('active', this)">
             <span data-i18n="admin.tab.active">Đang xử lý</span> <span class="count" id="cnt-active">0</span>
@@ -2456,28 +2287,6 @@
   });
 
   updateLangUI();
-
-  /* ---------- Build DNA double helix ---------- */
-  (function buildDNA() {
-    const dna = document.getElementById('dnaHelix');
-    if (!dna) return;
-    const COUNT = 48;     // dense enough to span the full panel width
-    const DURATION = 3;   // seconds — must match @keyframes duration
-    /* Stagger across 2 full helical turns so the user sees ~2 visible "twists" */
-    const TURNS = 2;
-    for (let i = 0; i < COUNT; i++) {
-      const phase = ((i / COUNT) * TURNS) % 1;
-      const delay = -(phase * DURATION).toFixed(3) + 's';
-      const bp = document.createElement('div');
-      bp.className = 'bp';
-      bp.innerHTML = `
-        <div class="bar" style="animation-delay:${delay}"></div>
-        <div class="dot top" style="animation-delay:${delay}"></div>
-        <div class="dot bot" style="animation-delay:${delay}"></div>
-      `;
-      dna.appendChild(bp);
-    }
-  })();
 
   function escapeHtml(s) {
     return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
