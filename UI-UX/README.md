@@ -1,19 +1,27 @@
-# UI/UX — 9Seven · FFC (Fix Fast Center)
+<div align="center">
 
-> Phần **thiết kế giao diện & trải nghiệm người dùng** của hệ thống quản lý cửa hàng sửa chữa điện thoại / máy tính **FFC (Fix Fast Center)** — Đồ án môn **Công nghệ Phần mềm** của nhóm **9Seven**.
+# UI / UX — FFC Frontend
+
+### Phần giao diện người dùng của hệ thống Fix Fast Center
+
+HTML5 · CSS3 · Vanilla JavaScript · Chart.js · i18n VI / EN
+
+[← Quay lại README chính](../README.md)
+
+</div>
 
 ---
 
 ## 1. Giới thiệu
 
-**FFC (Fix Fast Center)** là hệ thống quản lý tổng thể cho cửa hàng sửa chữa thiết bị điện tử, hỗ trợ:
+Module này chứa toàn bộ **frontend tĩnh** (HTML/CSS/JS thuần) của hệ thống FFC. Có thể chạy độc lập với backend qua một local HTTP server, hữu ích cho việc thiết kế, kiểm thử UX, và demo độc lập.
 
-- Tiếp nhận yêu cầu sửa chữa từ khách hàng (online + tại quầy).
-- Phân công kỹ thuật viên, theo dõi tiến độ đơn sửa.
-- Quản lý linh kiện, phụ tùng, bảo hành, báo giá.
-- Chat trực tiếp giữa khách hàng và kỹ thuật viên.
-
-Thư mục `UI-UX/` này chứa **toàn bộ phần frontend (HTML/CSS/JS thuần)**, tài liệu thiết kế và placeholder cho backend của dự án.
+| Thông tin | Chi tiết |
+| :--- | :--- |
+| **Loại** | Static frontend (không build step) |
+| **Phụ thuộc runtime** | Chỉ cần một HTTP server (Python, Node, hoặc bất kỳ) |
+| **Phụ thuộc CDN** | Chart.js 4.4, Google Fonts (Inter) |
+| **Backend liên kết** | [`../9Seven-CNPM/`](../9Seven-CNPM/) (sẽ tích hợp qua REST API) |
 
 ---
 
@@ -21,97 +29,121 @@ Thư mục `UI-UX/` này chứa **toàn bộ phần frontend (HTML/CSS/JS thuầ
 
 ```
 UI-UX/
-├── frontend/                 # Giao diện người dùng (HTML/CSS/JS thuần)
-│   ├── index.html            # Trang khách hàng – giới thiệu, đặt lịch sửa
-│   ├── admin.html            # Trang quản trị / kỹ thuật viên
-│   ├── dashboard.html        # Bảng điều khiển nội bộ
-│   ├── chat.html             # Chat khách hàng ↔ kỹ thuật viên
+├── frontend/
+│   ├── index.html          ← Trang khách hàng — landing + đặt lịch sửa
+│   ├── admin.html          ← Trang đăng nhập KTV (giao diện brand FFC)
+│   ├── dashboard.html      ← Bảng điều khiển nội bộ (KTV / Admin)
+│   ├── chat.html           ← Chat khách hàng ↔ KTV
 │   └── assets/
-│       ├── images/           # Logo, ảnh hero (PC, laptop, iPhone), ảnh team
+│       ├── images/         ← Logo, ảnh team, ảnh hero
 │       └── js/
-│           └── i18n.js       # Đa ngôn ngữ Việt / Anh
-├── backend/                  # (Placeholder) Server / API / database – sẽ phát triển sau
-│   └── README.md
-├── docs/                     # Tài liệu CNPM (SRS, use-case, ERD, mockup…)
-│   └── README.md
-├── .gitignore
-├── LICENSE                   # MIT
-└── README.md                 # (File này)
+│           └── i18n.js     ← Module đa ngôn ngữ tự viết
+├── docs/                   ← Tài liệu thiết kế (xem docs/README.md)
+├── backend/                ← Placeholder cũ — backend thật ở /9Seven-CNPM
+├── LICENSE                 ← MIT
+└── README.md               ← (File này)
 ```
 
 ---
 
 ## 3. Các trang chính
 
-| Trang             | Vai trò                                                                 |
-| ----------------- | ----------------------------------------------------------------------- |
-| `index.html`      | Trang khách hàng — giới thiệu dịch vụ, đội ngũ kỹ thuật viên, đặt lịch  |
-| `admin.html`      | Trang quản trị — tiếp nhận yêu cầu, trả lời khách, quản lý đơn          |
-| `dashboard.html`  | Bảng điều khiển nội bộ — thống kê, theo dõi tiến độ                     |
-| `chat.html`       | Chat trực tiếp giữa khách hàng và kỹ thuật viên                         |
+| Trang | URL local | Vai trò |
+| :--- | :--- | :--- |
+| **Landing** | `/index.html` | Trang khách hàng — giới thiệu, đặt lịch sửa, gặp team |
+| **Đăng nhập** | `/admin.html` | Form đăng nhập KTV / khách hàng |
+| **Dashboard** | `/dashboard.html` | Bảng điều khiển nội bộ — phiếu sửa, kho, báo cáo |
+| **Chat** | `/chat.html` | Trò chuyện thời gian thực giữa khách và KTV |
 
 ---
 
-## 4. Chạy thử (frontend)
+## 4. Chạy & kiểm thử
 
-Vì là HTML thuần, có 2 cách:
-
-**Cách 1 — Mở trực tiếp:** double-click vào `frontend/index.html`.
-
-**Cách 2 — Chạy local server (khuyến nghị):**
+### 4.1. Cách nhanh (khuyến nghị)
 
 ```bash
 cd UI-UX/frontend
 python3 -m http.server 8000
 ```
 
-Sau đó truy cập: <http://localhost:8000/index.html>
+Mở <http://localhost:8000/index.html>.
 
-### Tài khoản demo (trang admin)
+### 4.2. Tài khoản demo
 
-| Field    | Value   |
-| -------- | ------- |
-| Username | `admin` |
-| Password | `admin` |
+| Vai trò | Username | Password | Redirect đến |
+| :--- | :--- | :--- | :--- |
+| Kỹ thuật viên | `admin` | `admin` | `dashboard.html` |
+| Khách hàng | `khach` | `khach` | `index.html` (chat widget hiện ra) |
 
-### Edit mode (chỉnh vị trí 3 ảnh hero)
+### 4.3. Edit mode (chỉnh vị trí ảnh hero)
 
-Mở `index.html?edit=1` → kéo-thả từng ảnh (PC / laptop / iPhone), lăn chuột để zoom (giữ `Shift` để fine-tune), bấm **Copy CSS** để lấy giá trị paste vào stylesheet. Tắt `?edit=1` → trang trở lại bình thường, không ảnh hưởng người dùng cuối.
-
----
-
-## 5. Công nghệ
-
-| Tầng         | Công nghệ                                                        |
-| ------------ | ---------------------------------------------------------------- |
-| **Frontend** | HTML5, CSS3, JavaScript (vanilla), i18n Việt / Anh               |
-| **Backend**  | _Chưa chốt_ — dự kiến Node.js/Express hoặc PHP/Laravel           |
-| **Database** | _Chưa chốt_ — dự kiến MySQL hoặc MongoDB                         |
+Mở `index.html?edit=1` — kéo thả 3 ảnh sản phẩm (PC, laptop, iPhone), lăn chuột để zoom (giữ `Shift` để fine-tune), bấm **Copy CSS** để lấy giá trị paste vào stylesheet. Tắt `?edit=1` thì trang trở lại bình thường.
 
 ---
 
-## 6. Tiến độ
+## 5. Phong cách code
 
-- [x] Thiết kế UI trang khách hàng, admin, dashboard, chat
-- [x] Đa ngôn ngữ (Việt / Anh) qua `i18n.js`
-- [x] Rebrand từ Pharmacy Academy → FFC (Fix Fast Center)
-- [ ] Tách CSS riêng khỏi HTML
-- [ ] Xây dựng backend & database
-- [ ] Chức năng đặt lịch sửa thực tế
-- [ ] Quản lý đơn sửa chữa (CRUD)
-- [ ] Quản lý linh kiện / kho
-- [ ] Hệ thống bảo hành
-- [ ] Triển khai & viết tài liệu CNPM
+### 5.1. CSS architecture
+
+- **CSS variables** (`--brand-*`, `--text-*`, `--surface-*`) định nghĩa trong `:root`
+- **Dark mode** áp qua attribute `[data-theme="dark"]` trên `<html>` — đồng bộ giữa các tab qua `localStorage`
+- **Anti-FOUC**: áp theme trong `<head>` trước khi render → tránh nháy sáng → tối khi load lại
+
+### 5.2. JavaScript
+
+- Vanilla ES6+, không transpile
+- Module pattern qua IIFE để tránh ô nhiễm `window`
+- Mock data inline (`const TICKETS = [...]`) — sẽ thay bằng `fetch('/api/tickets')` khi tích hợp BE
+
+### 5.3. i18n
+
+```html
+<!-- Văn bản -->
+<span data-i18n="login.welcome">Chào mừng</span>
+
+<!-- Placeholder / aria-label / title -->
+<input data-i18n-attr="placeholder:login.placeholder.user" />
+```
+
+Đăng ký key mới trong [`assets/js/i18n.js`](frontend/assets/js/i18n.js):
+
+```js
+'login.team_badge': { vi: 'Đang hoạt động', en: 'Online' },
+```
 
 ---
 
-## 7. Nhóm 9Seven
+## 6. Trạng thái phát triển
 
-| Họ tên           | MSSV | Vai trò |
-| ---------------- | ---- | ------- |
-| _Cập nhật sau_   |      |         |
-| _Cập nhật sau_   |      |         |
-| _Cập nhật sau_   |      |         |
+| Trang / Tính năng | Hoàn thành | Ghi chú |
+| :--- | :---: | :--- |
+| Landing (`index.html`) | ✅ | Hero, services, team, footer |
+| Đăng nhập (`admin.html`) | ✅ | Login form, dual role admin/khách |
+| Dashboard — Tổng quan | ✅ | KPI cards, gần đây |
+| Dashboard — Tiếp nhận | ✅ | Form tạo phiếu mới |
+| Dashboard — Phiếu sửa | ✅ | List + filter + modal chi tiết |
+| Dashboard — Khách hàng | ✅ | Bảng + tìm kiếm |
+| Dashboard — Chat support | ✅ | UI chat nội bộ |
+| Dashboard — Kho linh kiện | ✅ | 15 SKU mẫu + filter + cảnh báo tồn |
+| Dashboard — Thanh toán | ✅ | Modal hóa đơn + stats |
+| Dashboard — Báo cáo | ✅ | 4 KPI + 4 charts (Chart.js) |
+| Dashboard — Nhân viên | ⏳ | Stub — sẽ làm Sprint 3 |
+| Dashboard — Cài đặt | ⏳ | Stub — sẽ làm Sprint 3 |
+| Chat (`chat.html`) | 🟡 | UI xong, chưa wire realtime backend |
+
+✅ = Hoàn thành · 🟡 = Đang hoàn thiện · ⏳ = Chưa bắt đầu
+
+---
+
+## 7. Việc cần làm
+
+- [ ] Tách CSS ra `assets/css/` (`theme.css`, `components.css`, `pages/*.css`)
+- [ ] Tách JS ra `assets/js/` (`theme.js`, `nav.js`, `dashboard.js`...)
+- [ ] Xoá toàn bộ inline `onclick=""` → dùng `addEventListener`
+- [ ] Tách header / footer ra component dùng chung 4 trang
+- [ ] Tối ưu ảnh (compress `F3-FFCenter.png` từ 2MB → ~300KB qua WebP)
+- [ ] Đổi tên file ảnh `Nhân viên.png` thành `nhan-vien.png` (bỏ dấu cách + dấu)
+- [ ] Tích hợp `fetch` thay mock data khi backend sẵn sàng
 
 ---
 

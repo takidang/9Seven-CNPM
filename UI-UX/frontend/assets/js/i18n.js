@@ -557,6 +557,9 @@
     /* ============== ADMIN LOGIN ============== */
     'login.policy_terms':   { vi: 'Chính Sách Sử Dụng', en: 'Terms of Use' },
     'login.policy_privacy': { vi: 'Chính Sách Bảo Mật', en: 'Privacy Policy' },
+    'login.team_title':     { vi: 'Đội ngũ kỹ thuật viên FFC', en: 'Meet the FFC technicians' },
+    'login.team_sub':       { vi: 'Chuyên gia chính hãng · 5+ năm kinh nghiệm', en: 'Certified experts · 5+ years of experience' },
+    'login.team_badge':     { vi: 'Đang hoạt động',     en: 'Online' },
     'brand.stat.lessons':   { vi: 'Ca sửa',             en: 'Repairs' },
     'brand.stat.experts':   { vi: 'Kỹ thuật viên',      en: 'Technicians' },
     'brand.stat.students':  { vi: 'Khách hàng',         en: 'Customers' },

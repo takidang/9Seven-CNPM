@@ -309,11 +309,13 @@
     .left-brand img { animation: none; }
   }
 
-  /* Middle group — stats + policy cards stacked, sits in the vertical center */
+  /* Middle group — stats + showcase + policy cards, fills the panel vertically */
   .login-mid {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    min-height: 0;
   }
   /* Brand stats — fill the middle space with relevant numbers,
      glass cards matching the info-card aesthetic. */
@@ -356,6 +358,29 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
   }
+
+  /* Team showcase — bare photo with rounded corners only */
+  .team-showcase {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform .3s ease;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+  }
+  .team-showcase:hover { transform: translateY(-3px); }
+  .team-showcase img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+    transition: transform .6s ease;
+  }
+  .team-showcase:hover img { transform: scale(1.02); }
 
   /* Policy / info link cards — sit close under the stats now */
   .info-cards {
@@ -544,6 +569,27 @@
     z-index: -1;
     filter: blur(8px);
     opacity: 0.75;
+  }
+  /* Logo above "Chào mừng trở lại" heading */
+  .login-card-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .login-card-logo img {
+    width: 200px;
+    max-width: 70%;
+    height: auto;
+    filter: drop-shadow(0 6px 18px rgba(30, 58, 95, 0.22))
+            drop-shadow(0 2px 6px rgba(59, 130, 246, 0.18));
+    animation: logo-float 6s ease-in-out infinite;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .login-card-logo img { animation: none; }
+  }
+  @media (max-width: 768px) {
+    .login-card-logo img { width: 160px; }
   }
 
   .login-logo {
@@ -1508,12 +1554,7 @@
 
   <!-- ========== LEFT BRAND PANEL ========== -->
   <div class="login-left">
-    <!-- Big brand wordmark -->
-    <div class="left-brand">
-      <img src="assets/images/logo-ffc.png?v=2" alt="FFC — Fix Fast Center" />
-    </div>
-
-    <!-- Middle group: stats + policy cards, vertically centered between logo and footer -->
+    <!-- Middle group: stats + showcase + policy cards, vertically centered -->
     <div class="login-mid">
       <!-- Brand stats — 3 highlight numbers -->
       <div class="brand-stats">
@@ -1529,6 +1570,11 @@
           <div class="num">2.000+</div>
           <div class="lbl" data-i18n="brand.stat.students">Khách hàng</div>
         </div>
+      </div>
+
+      <!-- Team showcase — FFC technicians hero photo -->
+      <div class="team-showcase">
+        <img src="assets/images/F3-FFCenter.png?v=1" alt="Đội ngũ kỹ thuật viên FFC" />
       </div>
 
       <!-- Policy/info link cards -->
@@ -1639,6 +1685,9 @@
     </div>
 
     <div class="login-card">
+      <div class="login-card-logo">
+        <img src="assets/images/logo-ffc.png?v=2" alt="FFC — Fix Fast Center" />
+      </div>
       <h1>
         <span data-i18n="login.welcome.line1">Chào mừng</span>
         <span data-i18n="login.welcome.accent">trở lại!</span>

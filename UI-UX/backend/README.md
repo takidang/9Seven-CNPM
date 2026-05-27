@@ -1,16 +1,48 @@
-# Backend – FFC (Fix Fast Center)
+# Backend — Placeholder
 
-Phần server / API / database của hệ thống quản lý cửa hàng sửa chữa.
+> **Lưu ý:** Backend thật của dự án đã được khởi tạo tại [`/9Seven-CNPM/`](../../9Seven-CNPM/) ở thư mục gốc repository — dùng **ASP.NET Core 10**.
+>
+> Folder này (`UI-UX/backend/`) giữ lại để tham chiếu cho giai đoạn đầu khi nhóm chưa chốt công nghệ. Sẽ được dọn dẹp khi backend chính thức ổn định.
 
-> 🚧 **Chưa phát triển.** Sẽ bổ sung sau khi nhóm chốt công nghệ (Node.js/Express, PHP/Laravel, hoặc Python/Django…).
+---
+
+## Backend chính ở đâu?
+
+```
+9Seven-CNPM/                ← root repo
+├── 9Seven-CNPM/            ← ← ← Backend thật ở đây
+│   ├── Controllers/
+│   ├── Models/
+│   ├── Views/
+│   ├── Program.cs
+│   └── 9Seven-CNPM.csproj
+└── UI-UX/
+    └── backend/            ← (folder này — placeholder)
+```
+
+---
+
+## Chạy backend
+
+```bash
+cd 9Seven-CNPM     # từ root repo
+dotnet restore
+dotnet run
+```
+
+Mặc định chạy tại <http://localhost:5000>.
+
+---
 
 ## Dự kiến chức năng
 
-- Đăng ký / đăng nhập (JWT hoặc session) cho khách hàng & kỹ thuật viên
-- Phân quyền (admin, kỹ thuật viên, khách hàng)
-- CRUD đơn sửa chữa, lịch hẹn, khách hàng
-- Quản lý linh kiện / kho phụ tùng
-- Quản lý bảo hành (hết hạn, lịch sử bảo hành)
-- API chat realtime (WebSocket / Socket.IO) khách hàng ↔ kỹ thuật viên
-- Báo cáo doanh thu, KPI kỹ thuật viên
-- Lưu trữ ảnh tình trạng máy trước / sau sửa
+Khi backend được hoàn thiện, sẽ cung cấp REST API cho các nghiệp vụ sau:
+
+- **Authentication** — đăng ký, đăng nhập (JWT), phân quyền (admin / KTV / khách)
+- **Repair Orders** — CRUD phiếu sửa, lịch hẹn, lịch sử trạng thái
+- **Customers** — quản lý hồ sơ khách hàng + lịch sử
+- **Inventory** — linh kiện, nhập / xuất kho, cảnh báo tồn thấp
+- **Warranty** — tra cứu bảo hành theo IMEI / mã phiếu
+- **Chat** — realtime qua SignalR (khách ↔ KTV)
+- **Reports** — doanh thu, KPI KTV, top linh kiện
+- **File storage** — ảnh thiết bị trước / sau sửa
