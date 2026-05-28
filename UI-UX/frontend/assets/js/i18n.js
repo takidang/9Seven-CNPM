@@ -843,7 +843,7 @@
     'dash.search.placeholder': { vi: 'Tìm phiếu, khách hàng, SĐT...', en: 'Search ticket, customer, phone...' },
     'dash.btn.new_intake':    { vi: 'Tiếp nhận',                 en: 'New intake' },
     'dash.user.role':         { vi: 'Kỹ thuật viên',             en: 'Technician' },
-    'dash.user.name':         { vi: 'Admin FFC',                 en: 'Admin FFC' },
+    'dash.user.name':         { vi: 'Sam Phạm',                  en: 'Sam Phạm' },
 
     /* KPI cards */
     'dash.kpi.today':         { vi: 'Phiếu hôm nay',             en: 'Tickets today' },

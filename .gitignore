@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# macOS / IDE (added by FFC team)
+.DS_Store
+.vscode/
+database/db-view.html
