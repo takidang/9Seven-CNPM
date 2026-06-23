@@ -10,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IQrCodeService, QrCodeService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
+// Register report services
+builder.Services.AddScoped<IReportService, ReportService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
